@@ -1,3 +1,7 @@
+GG Drive: https://drive.google.com/drive/folders/1f3CuwMKp-fwVTGP12StGYPooCVCD0CyY
+
+Repo tương tự: https://drive.google.com/drive/folders/1f3CuwMKp-fwVTGP12StGYPooCVCD0CyY
+
 # money_manager
 
 A new Flutter project.
