@@ -33,9 +33,23 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+<<<<<<< HEAD
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.tvt.money_manager.money_manager"
+=======
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.example.money_manager"
+>>>>>>> a63573453d1ec46a07694be87a4618bf20e56212
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
@@ -54,3 +68,10 @@ android {
 flutter {
     source '../..'
 }
+<<<<<<< HEAD
+=======
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+>>>>>>> a63573453d1ec46a07694be87a4618bf20e56212

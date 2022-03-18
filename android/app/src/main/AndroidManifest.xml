@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.tvt.money_manager.money_manager">
+=======
+    package="com.example.money_manager">
+>>>>>>> a63573453d1ec46a07694be87a4618bf20e56212
    <application
         android:label="money_manager"
         android:name="${applicationName}"
