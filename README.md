@@ -1,6 +1,6 @@
 GG Drive: https://drive.google.com/drive/folders/1f3CuwMKp-fwVTGP12StGYPooCVCD0CyY
 
-Repo tương tự: https://drive.google.com/drive/folders/1f3CuwMKp-fwVTGP12StGYPooCVCD0CyY
+Repo tương tự: https://github.com/hiru-vn/wallet-app-money-management-flutter/tree/e146b991a25198da01f73c24ded0dd8d56dc3d7d
 
 # money_manager
 
