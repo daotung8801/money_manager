@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:money_manager_test/Category.dart';
-import 'package:money_manager_test/CreatReminder.dart';
+import 'package:money_manager_test/CreateReminder.dart';
+import 'package:money_manager_test/ExchangeMoney.dart';
+import 'package:money_manager_test/Account.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Money Manager',
-      home: CreateReminder(title: 'title'),
+      home: Account(title: 'title'),
     );
   }
 }

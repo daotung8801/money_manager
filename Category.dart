@@ -1,63 +1,9 @@
 import 'package:flutter/material.dart';
-import 'Component/SearchItem.dart';
-
+import 'package:money_manager_test/Component/TitleText1.dart';
 
 class Category extends StatelessWidget {
   Category({Key? key, required this.title}) : super(key: key);
   final String title;
-
-  void _showDialog(BuildContext context) {
-    showDialog(
-      context: context, builder: (BuildContext context) {
-        return AlertDialog(
-          title: Padding(
-            padding: EdgeInsets.only(left: 16),
-            child: Text(
-              'Xuất dữ liệu dưới dạng',
-              style: TextStyle(fontFamily: 'Inter', fontSize: 20),
-            ),
-          ),
-          content: Row(
-            children:[
-              Padding(
-                padding: EdgeInsets.only(left: 75),
-                child: Icon(Icons.adjust_rounded, color: Color.fromARGB(1000, 35, 111, 87)),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 5),
-                child:Text(
-                'Excel',
-                style: TextStyle(fontFamily: 'Inter', fontSize: 18),
-                ),
-              ),
-            ]
-          ),
-          actions: <Widget>[
-            FlatButton(
-              padding: EdgeInsets.only(right : 80, bottom: 20),
-              child: Text(
-                'Hủy',
-                style: TextStyle(fontFamily: 'Inter', fontSize: 18)
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            FlatButton(
-              padding: EdgeInsets.only(right: 55, bottom: 20),
-              child: Text(
-                  'Xuất',
-                  style: TextStyle(fontFamily: 'Inter', fontSize: 18)
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +14,7 @@ class Category extends StatelessWidget {
             centerTitle: true,
             title: Padding(
               padding: EdgeInsets.only(top: 10),
-              child: Text(
-                'Danh mục',
-                style: TextStyle(fontFamily: 'Inter', fontSize: 25),
-              ),
+              child: TitleText1(text: 'Danh mục', fontFamily: 'Inter', fontSize: 25),
             ),
             backgroundColor: Colors.transparent,
             toolbarHeight: 100,
@@ -83,29 +26,6 @@ class Category extends StatelessWidget {
               tooltip: 'Menu',
               onPressed: () => {},
             ),
-            actions: <Widget>[
-              IconButton(
-                padding: EdgeInsets.only(right: 5, top: 10),
-                iconSize: 30,
-                icon: Icon(Icons.search),
-                tooltip: 'Tìm kiếm',
-                onPressed: () => {
-                  showSearch(
-                    context: context,
-                    delegate: CustomSearchDelegate(),
-                  )
-                },
-              ),
-              IconButton(
-                padding: EdgeInsets.only(right: 20, top: 10),
-                iconSize: 30,
-                icon: Icon(Icons.download),
-                tooltip: 'Tải xuống',
-                onPressed: () => {
-                  _showDialog(context),
-                },
-              ),
-            ],
             flexibleSpace: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -113,8 +33,8 @@ class Category extends StatelessWidget {
                         bottomRight: Radius.circular(25)),
                     gradient: LinearGradient(
                       colors: [
-                        Color.fromARGB(1000, 35, 111, 87),
-                        Color.fromARGB(1000, 35, 111, 87),
+                        Color.fromARGB(255, 35, 111, 87),
+                        Color.fromARGB(255, 35, 111, 87),
                       ],
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
@@ -128,33 +48,21 @@ class Category extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 20.0),
               tabs: [
                 Tab(
-                  child: Text(
-                    "Chi phí",
-                    style: TextStyle(fontFamily: 'Inter', fontSize: 18),
-                  ),
+                  child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18),
                 ),
                 Tab(
-                  child: Text(
-                    "Thu nhập",
-                    style: TextStyle(fontFamily: 'Inter', fontSize: 18),
-                  ),
+                  child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18),
                 ),
               ],
             ),
         ),
         body: TabBarView (
           children: [
-            buildPage('Chi Phí'),
-            buildPage('Thu nhập'),
+            Center(child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18)),
+            Center(child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18)),
           ],
         ),
       ),
     );
   }
-  Widget buildPage(String text) => Center(
-    child: Text(
-      text,
-      style: TextStyle(fontFamily: 'Inter', fontSize: 18),
-    )
-  );
 }
