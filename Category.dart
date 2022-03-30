@@ -11,29 +11,33 @@ class Category extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
             centerTitle: true,
-            title: Text(
+            title: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Text(
                 'Danh mục',
                 style: TextStyle(fontFamily: "Inter", fontSize: 25),
+              ),
             ),
             backgroundColor: Colors.transparent,
             toolbarHeight: 100,
             elevation: 0.0,
             leading: IconButton(
-              padding: EdgeInsets.only(left: 32),
+              padding: EdgeInsets.only(left: 32, top: 10),
               iconSize: 30,
               icon: Icon(Icons.menu),
+              tooltip: 'Menu',
               onPressed: () => {},
             ),
             actions: <Widget>[
               IconButton(
-                padding: EdgeInsets.only(right: 5),
+                padding: EdgeInsets.only(right: 5, top: 10),
                 iconSize: 30,
                 icon: Icon(Icons.search),
                 tooltip: 'Tìm kiếm',
                 onPressed: () => {},
               ),
               IconButton(
-                padding: EdgeInsets.only(right: 20),
+                padding: EdgeInsets.only(right: 20, top: 10),
                 iconSize: 30,
                 icon: Icon(Icons.download),
                 tooltip: 'Tải xuống',
@@ -48,7 +52,7 @@ class Category extends StatelessWidget {
                     gradient: LinearGradient(
                       colors: [
                         Color.fromARGB(1000, 35, 111, 87),
-                        Color.fromARGB(1000, 35, 111, 87)
+                        Color.fromARGB(1000, 35, 111, 87),
                       ],
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
@@ -57,9 +61,9 @@ class Category extends StatelessWidget {
             ),
             bottom: TabBar(
               indicatorColor: Colors.white,
-              indicatorWeight: 4,
-              indicatorPadding: EdgeInsets.only(left: 45.0, right: 45.0, bottom: 5.0),
-              padding: EdgeInsets.only(bottom: 25.0),
+              indicatorWeight: 3,
+              indicatorPadding: EdgeInsets.only(left: 50.0, right: 50.0, bottom: 2.0),
+              padding: EdgeInsets.only(bottom: 20.0),
               tabs: [
                 Tab(
                   child: Text(
