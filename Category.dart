@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Component/SearchItem.dart';
 
@@ -15,7 +14,7 @@ class Category extends StatelessWidget {
             padding: EdgeInsets.only(left: 16),
             child: Text(
               'Xuất dữ liệu dưới dạng',
-              style: TextStyle(fontFamily: "Inter", fontSize: 20),
+              style: TextStyle(fontFamily: 'Inter', fontSize: 20),
             ),
           ),
           content: Row(
@@ -28,7 +27,7 @@ class Category extends StatelessWidget {
                 padding: EdgeInsets.only(left: 5),
                 child:Text(
                 'Excel',
-                style: TextStyle(fontFamily: "Inter", fontSize: 18),
+                style: TextStyle(fontFamily: 'Inter', fontSize: 18),
                 ),
               ),
             ]
@@ -38,7 +37,7 @@ class Category extends StatelessWidget {
               padding: EdgeInsets.only(right : 80, bottom: 20),
               child: Text(
                 'Hủy',
-                style: TextStyle(fontFamily: "Inter", fontSize: 18)
+                style: TextStyle(fontFamily: 'Inter', fontSize: 18)
               ),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -48,7 +47,7 @@ class Category extends StatelessWidget {
               padding: EdgeInsets.only(right: 55, bottom: 20),
               child: Text(
                   'Xuất',
-                  style: TextStyle(fontFamily: "Inter", fontSize: 18)
+                  style: TextStyle(fontFamily: 'Inter', fontSize: 18)
               ),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -71,7 +70,7 @@ class Category extends StatelessWidget {
               padding: EdgeInsets.only(top: 10),
               child: Text(
                 'Danh mục',
-                style: TextStyle(fontFamily: "Inter", fontSize: 25),
+                style: TextStyle(fontFamily: 'Inter', fontSize: 25),
               ),
             ),
             backgroundColor: Colors.transparent,
@@ -131,13 +130,13 @@ class Category extends StatelessWidget {
                 Tab(
                   child: Text(
                     "Chi phí",
-                    style: TextStyle(fontFamily: "Inter", fontSize: 18),
+                    style: TextStyle(fontFamily: 'Inter', fontSize: 18),
                   ),
                 ),
                 Tab(
                   child: Text(
                     "Thu nhập",
-                    style: TextStyle(fontFamily: "Inter", fontSize: 18),
+                    style: TextStyle(fontFamily: 'Inter', fontSize: 18),
                   ),
                 ),
               ],
@@ -155,7 +154,7 @@ class Category extends StatelessWidget {
   Widget buildPage(String text) => Center(
     child: Text(
       text,
-      style: TextStyle(fontFamily: "Inter", fontSize: 18),
+      style: TextStyle(fontFamily: 'Inter', fontSize: 18),
     )
   );
 }
