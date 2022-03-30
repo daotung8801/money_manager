@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'Component/SearchItem.dart';
+
 
 class Category extends StatelessWidget {
   Category({Key? key, required this.title}) : super(key: key);
@@ -34,7 +36,12 @@ class Category extends StatelessWidget {
                 iconSize: 30,
                 icon: Icon(Icons.search),
                 tooltip: 'Tìm kiếm',
-                onPressed: () => {},
+                onPressed: () => {
+                  showSearch(
+                    context: context,
+                    delegate: CustomSearchDelegate(),
+                  )
+                },
               ),
               IconButton(
                 padding: EdgeInsets.only(right: 20, top: 10),
