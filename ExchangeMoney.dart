@@ -13,7 +13,7 @@ class ExchangeMoney extends StatelessWidget {
         return AlertDialog(
           title: Padding(
             padding: EdgeInsets.only(left: 16),
-            child: TitleText1(text: 'Xuất dữ liệu dưới dạng', fontFamily: 'Inter', fontSize: 20),
+            child: TitleText1(text: 'Xuất dữ liệu dưới dạng', fontFamily: 'Inter', fontSize: 20, fontWeight: FontWeight.bold),
           ),
           content: Row(children: [
             Padding(
@@ -24,20 +24,20 @@ class ExchangeMoney extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(left: 5),
-              child: TitleText1(text: 'Excel', fontFamily: 'Inter', fontSize: 18),
+              child: TitleText1(text: 'Excel', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ]),
           actions: <Widget>[
             FlatButton(
               padding: EdgeInsets.only(right: 80, bottom: 20),
-              child: TitleText1(text: 'Hủy', fontFamily: 'Inter', fontSize: 18),
+              child: TitleText1(text: 'Hủy', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             FlatButton(
               padding: EdgeInsets.only(right: 55, bottom: 20),
-              child: TitleText1(text: 'Xuất', fontFamily: 'Inter', fontSize: 18),
+              child: TitleText1(text: 'Xuất', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -57,7 +57,7 @@ class ExchangeMoney extends StatelessWidget {
           centerTitle: true,
           title: Padding(
             padding: EdgeInsets.only(top: 10),
-            child: TitleText1(text: 'Giao dịch', fontFamily: 'Inter', fontSize: 25),
+            child: TitleText1(text: 'Giao dịch', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold),
           ),
           backgroundColor: Colors.transparent,
           toolbarHeight: 100,
@@ -115,18 +115,18 @@ class ExchangeMoney extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 20.0),
             tabs: [
               Tab(
-                child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18),
+                child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Tab(
-                child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18),
+                child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            Center(child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18)),
-            Center(child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18)),
+            Center(child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal)),
+            Center(child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal)),
           ],
         ),
       ),

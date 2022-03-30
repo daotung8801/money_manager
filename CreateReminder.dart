@@ -14,7 +14,7 @@ class CreateReminder extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
-        title: TitleText1(text: 'Tạo lời nhắc', fontFamily: 'Inter', fontSize: 25),
+        title: TitleText1(text: 'Tạo lời nhắc', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold),
         backgroundColor: Colors.transparent,
         toolbarHeight: 72,
         elevation: 0.0,

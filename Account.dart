@@ -13,7 +13,7 @@ class Account extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
-        title: TitleText1(text: 'Tài khoản', fontFamily: 'Inter', fontSize: 25),
+        title: TitleText1(text: 'Tài khoản', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold),
         backgroundColor: Colors.transparent,
         toolbarHeight: 72,
         elevation: 0.0,
@@ -57,13 +57,7 @@ class Account extends StatelessWidget {
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 10),
-              child: Text(
-                '20,000,000 đ',
-                style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
+              child: TitleText1(text: '20,000,000 đ', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ),
           Row(children: [

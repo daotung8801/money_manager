@@ -14,7 +14,7 @@ class Category extends StatelessWidget {
             centerTitle: true,
             title: Padding(
               padding: EdgeInsets.only(top: 10),
-              child: TitleText1(text: 'Danh mục', fontFamily: 'Inter', fontSize: 25),
+              child: TitleText1(text: 'Danh mục', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold),
             ),
             backgroundColor: Colors.transparent,
             toolbarHeight: 100,
@@ -48,18 +48,18 @@ class Category extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 20.0),
               tabs: [
                 Tab(
-                  child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18),
+                  child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Tab(
-                  child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18),
+                  child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
         ),
         body: TabBarView (
           children: [
-            Center(child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18)),
-            Center(child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18)),
+            Center(child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal)),
+            Center(child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal)),
           ],
         ),
       ),
