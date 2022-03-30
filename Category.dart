@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Component/SearchItem.dart';
 
@@ -5,6 +6,59 @@ import 'Component/SearchItem.dart';
 class Category extends StatelessWidget {
   Category({Key? key, required this.title}) : super(key: key);
   final String title;
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context, builder: (BuildContext context) {
+        return AlertDialog(
+          title: Padding(
+            padding: EdgeInsets.only(left: 16),
+            child: Text(
+              'Xuất dữ liệu dưới dạng',
+              style: TextStyle(fontFamily: "Inter", fontSize: 20),
+            ),
+          ),
+          content: Row(
+            children:[
+              Padding(
+                padding: EdgeInsets.only(left: 75),
+                child: Icon(Icons.adjust_rounded, color: Color.fromARGB(1000, 35, 111, 87)),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 5),
+                child:Text(
+                'Excel',
+                style: TextStyle(fontFamily: "Inter", fontSize: 18),
+                ),
+              ),
+            ]
+          ),
+          actions: <Widget>[
+            FlatButton(
+              padding: EdgeInsets.only(right : 80, bottom: 20),
+              child: Text(
+                'Hủy',
+                style: TextStyle(fontFamily: "Inter", fontSize: 18)
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              padding: EdgeInsets.only(right: 55, bottom: 20),
+              child: Text(
+                  'Xuất',
+                  style: TextStyle(fontFamily: "Inter", fontSize: 18)
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +102,9 @@ class Category extends StatelessWidget {
                 iconSize: 30,
                 icon: Icon(Icons.download),
                 tooltip: 'Tải xuống',
-                onPressed: () => {},
+                onPressed: () => {
+                  _showDialog(context),
+                },
               ),
             ],
             flexibleSpace: Container(
