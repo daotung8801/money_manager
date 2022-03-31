@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:money_manager_test/Category.dart';
-import 'package:money_manager_test/CreateReminder.dart';
-import 'package:money_manager_test/ExchangeMoney.dart';
-import 'package:money_manager_test/Account.dart';
-
-import 'ColumnChart.dart';
+import 'screens/Category.dart';
+import 'screens/CreateReminder.dart';
+import 'screens/ExchangeMoney.dart';
+import 'screens/Account.dart';
+import 'screens/ColumnChart.dart';
 
 void main() => runApp(MyApp());
 
