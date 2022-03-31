@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Component/ButtonPrimary.dart';
-import 'Component/TitleText1.dart';
+import '../components/ButtonPrimary.dart';
+import '../components/TitleText1.dart';
 
 class Account extends StatelessWidget {
   Account({Key? key, required this.title}) : super(key: key);

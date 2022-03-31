@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:money_manager_test/Component/PopUpNotification1.dart';
-import 'Component/SearchItem.dart';
-import 'Component/TitleText1.dart';
+import '../components/TitleText1.dart';
 
-class ExchangeMoney extends StatelessWidget {
-  ExchangeMoney({Key? key, required this.title}) : super(key: key);
+class ColumnChart extends StatelessWidget {
+  ColumnChart ({Key? key, required this.title}) : super(key: key);
   final String title;
-
-  void _showDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return PopUpNotification1();
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: Padding(
             padding: EdgeInsets.only(top: 10),
-            child: TitleText1(text: 'Giao dịch', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
+            child: TitleText1(text: 'Biểu đồ', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
           ),
           backgroundColor: Colors.transparent,
           toolbarHeight: 100,
@@ -37,29 +26,6 @@ class ExchangeMoney extends StatelessWidget {
             tooltip: 'Menu',
             onPressed: () => {},
           ),
-          actions: <Widget>[
-            IconButton(
-              padding: EdgeInsets.only(right: 5, top: 10),
-              iconSize: 30,
-              icon: Icon(Icons.search),
-              tooltip: 'Tìm kiếm',
-              onPressed: () => {
-                showSearch(
-                  context: context,
-                  delegate: CustomSearchDelegate(),
-                )
-              },
-            ),
-            IconButton(
-              padding: EdgeInsets.only(right: 20, top: 10),
-              iconSize: 30,
-              icon: Icon(Icons.download),
-              tooltip: 'Tải xuống',
-              onPressed: () => {
-                _showDialog(context),
-              },
-            ),
-          ],
           flexibleSpace: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -78,10 +44,12 @@ class ExchangeMoney extends StatelessWidget {
           bottom: TabBar(
             indicatorColor: Colors.white,
             indicatorWeight: 3,
-            indicatorPadding:
-                EdgeInsets.only(left: 50.0, right: 50.0, bottom: 2.0),
+            indicatorPadding: EdgeInsets.only(left: 25.0, right: 25.0, bottom: 2.0),
             padding: EdgeInsets.only(bottom: 20.0),
             tabs: [
+              Tab(
+                child: TitleText1(text: 'Chung', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
+              ),
               Tab(
                 child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
               ),
@@ -93,6 +61,7 @@ class ExchangeMoney extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
+            Center(child: TitleText1(text: 'Chung', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal, r: 0, g: 0, b: 0)),
             Center(child: TitleText1(text: 'Chi phí', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal, r: 0, g: 0, b: 0)),
             Center(child: TitleText1(text: 'Thu nhập', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal, r: 0, g: 0, b: 0)),
           ],

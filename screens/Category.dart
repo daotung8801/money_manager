@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Component/TitleText1.dart';
+import '../components/TitleText1.dart';
 
 class Category extends StatelessWidget {
   Category({Key? key, required this.title}) : super(key: key);

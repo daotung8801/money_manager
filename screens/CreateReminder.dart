@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:money_manager_test/Component/SmallHeader.dart';
-import 'Component/InputText1.dart';
-import 'Component/ButtonPrimary.dart';
+import '../components/SmallHeader.dart';
+import '../components/InputText1.dart';
+import '../components/ButtonPrimary.dart';
 
 class CreateReminder extends StatelessWidget {
   CreateReminder({Key? key, required this.title}) : super(key: key);
