@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Money Manager',
-      home: ExchangeMoney(title: 'title'),
+      home: CreateReminder(title: 'title'),
     );
   }
 }

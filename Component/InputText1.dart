@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class InputText1 extends StatelessWidget {
-  InputText1({Key? key, required this.hintText, required this.labelText, required this.maxLines}) : super(key: key);
+  InputText1(
+      {Key? key,
+      required this.hintText,
+      required this.labelText,
+      required this.maxLines})
+      : super(key: key);
+
   String hintText, labelText;
   int maxLines;
 
@@ -25,7 +31,9 @@ class InputText1 extends StatelessWidget {
         border: OutlineInputBorder(),
         enabledBorder: const OutlineInputBorder(
           borderSide: const BorderSide(
-              color: Color.fromARGB(255, 189, 189, 189), width: 1.0),
+              color: Color.fromARGB(255, 189, 189, 189),
+              width: 1.0
+          ),
         ),
         fillColor: Color.fromARGB(255, 232, 232, 232),
         filled: true,

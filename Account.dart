@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'Component/ButtonPrimary.dart';
 import 'Component/TitleText1.dart';
 
@@ -13,7 +12,7 @@ class Account extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
-        title: TitleText1(text: 'Tài khoản', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold),
+        title: TitleText1(text: 'Tài khoản', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
         backgroundColor: Colors.transparent,
         toolbarHeight: 72,
         elevation: 0.0,
@@ -45,19 +44,13 @@ class Account extends StatelessWidget {
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 25),
-              child: Text(
-                'Tổng cộng',
-                style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 18,
-                    color: Color.fromARGB(255, 127, 130, 103)),
-              ),
+              child: TitleText1(text: 'Tổng cộng', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal, r: 127, g: 130, b: 103),
             ),
           ),
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 10),
-              child: TitleText1(text: '20,000,000 đ', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold),
+              child: TitleText1(text: '20,000,000 đ', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 0, g: 0, b: 0),
             ),
           ),
           Row(children: [
@@ -116,14 +109,8 @@ class Account extends StatelessWidget {
                   onPressed: () {
                     print('Raise button');
                   },
-                  icon: Icon(Icons.attach_money),
-                  label: Text(
-                    'Chính            20,000,000 đ',
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18,
-                        color: Color.fromARGB(255, 127, 130, 103)),
-                  ),
+                  icon: Icon(Icons.attach_money, color: Color.fromARGB(255, 127, 130, 103)),
+                  label: TitleText1(text: 'Chính            20,000,000 đ', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold, r: 127, g: 130, b: 103),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),

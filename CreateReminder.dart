@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_manager_test/Component/InputText1.dart';
-
+import 'Component/InputText1.dart';
 import 'Component/ButtonPrimary.dart';
 import 'Component/TitleText1.dart';
 
@@ -14,7 +13,7 @@ class CreateReminder extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
-        title: TitleText1(text: 'Tạo lời nhắc', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold),
+        title: TitleText1(text: 'Tạo lời nhắc', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
         backgroundColor: Colors.transparent,
         toolbarHeight: 72,
         elevation: 0.0,
@@ -37,7 +36,7 @@ class CreateReminder extends StatelessWidget {
           padding: EdgeInsets.only(left: 32),
           iconSize: 30,
           alignment: Alignment.center,
-          icon: Icon(Icons.menu),
+          icon: Icon(Icons.arrow_back_sharp),
           onPressed: () => {},
         ),
       ),
