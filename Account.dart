@@ -122,7 +122,7 @@ class Account extends StatelessWidget {
           ),
           Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 250),
+              padding: EdgeInsets.only(top: 280),
               child: SizedBox (
                 width: 93,
                 height: 51,

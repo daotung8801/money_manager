@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:money_manager_test/Component/SmallHeader.dart';
 import 'Component/InputText1.dart';
 import 'Component/ButtonPrimary.dart';
-import 'Component/TitleText1.dart';
 
 class CreateReminder extends StatelessWidget {
   CreateReminder({Key? key, required this.title}) : super(key: key);
@@ -11,35 +11,7 @@ class CreateReminder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        centerTitle: true,
-        title: TitleText1(text: 'Tạo lời nhắc', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
-        backgroundColor: Colors.transparent,
-        toolbarHeight: 72,
-        elevation: 0.0,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25)),
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 35, 111, 87),
-                Color.fromARGB(255, 35, 111, 87)
-              ],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-            ),
-          ),
-        ),
-        leading: IconButton(
-          padding: EdgeInsets.only(left: 32),
-          iconSize: 30,
-          alignment: Alignment.center,
-          icon: Icon(Icons.arrow_back_sharp),
-          onPressed: () => {},
-        ),
-      ),
+      appBar: SmallHeader(title: 'Tạo lời nhắc', icon: Icon(Icons.arrow_back_sharp)),
       body: Column(
         children: <Widget>[
           Padding(
