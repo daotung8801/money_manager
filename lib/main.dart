@@ -58,6 +58,7 @@ class _MainPageState extends State<MainPage> {
         drawer: NavigationDrawerWidget(),
         // endDrawer: NavigationDrawerWidget(),
         appBar: AppBar(
+          //leading: new Container(),
           title: Text(MyApp.title),
         ),
         body: Builder(

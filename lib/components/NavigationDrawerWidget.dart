@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:money_manager/components/TitleText1.dart';
 import 'package:money_manager/screen/People.dart';
 import 'package:money_manager/screen/User.dart';
+import 'package:money_manager/screens/HomeScreen.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 16);
@@ -169,7 +170,9 @@ class NavigationDrawerWidget extends StatelessWidget {
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
+          builder: (context) => HomeScreen(
+            title: '',
+          ),
         ));
         break;
       case 1:
