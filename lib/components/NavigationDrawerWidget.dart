@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:money_manager/components/TitleText1.dart';
-import 'package:money_manager/screen/People.dart';
-import 'package:money_manager/screen/User.dart';
+import 'package:money_manager/screens/People.dart';
+import 'package:money_manager/screens/User.dart';
 import 'package:money_manager/screens/HomeScreen.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {

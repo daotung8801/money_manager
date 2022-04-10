@@ -4,11 +4,40 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b872a1de-173b-42cb-80ad-635519695bca" name="Default Changelist" comment="" />
+    <list default="true" id="b872a1de-173b-42cb-80ad-635519695bca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/NavigationDrawerWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/NavigationDrawerWidget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/Contact.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Contact.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/Currency.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/People.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/People.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/Reminder.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/User.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,6 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../money_manager" />
@@ -29,6 +59,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\money_manager\lib\screens" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -51,5 +86,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
