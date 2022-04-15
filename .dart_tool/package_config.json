@@ -93,7 +93,7 @@
     },
     {
       "name": "dart_style",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/dart_style-2.2.2",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/dart_style-2.2.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -350,7 +350,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-04-15T03:26:14.243111Z",
+  "generated": "2022-04-15T03:52:13.637987Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }
