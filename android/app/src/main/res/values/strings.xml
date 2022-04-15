@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Money Manger</string>
+    <string name="facebook_app_id">1747448285599123</string>
+    <string name="fb_login_protocol_scheme">fb1747448285599123</string>
+    <string name="facebook_client_token">f12fc5c1fbccc446d3d426716998e8db</string>
+</resources>

@@ -31,7 +31,7 @@ class CategoryGridView extends StatelessWidget {
           } else if (snapshot.hasError){
             return Text("Error");
           } else {
-            return Text("Loading...");
+            return CircularProgressIndicator();;
           }
 
         },

@@ -103,7 +103,7 @@ class CategoryIconWidget extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               height: 1.1666666666666667,
-                              fontSize: 30.0,
+                              fontSize: this.buttonSize/2,
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w400,
                               color: Color(int.parse(this.iconColor)),

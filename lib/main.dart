@@ -3,6 +3,8 @@ import 'components/ButtonWidget.dart';
 import 'components/NavigationDrawerWidget.dart';
 import 'screens/HomeScreen.dart';
 import 'screens/LoginScreen.dart';
+import 'package:money_manager/screens/HomeScreen.dart';
+import 'package:money_manager/screens/LoginScreen.dart';
 import 'components/Category.dart';
 import 'screens/Currency.dart';
 import 'screens/RegisterScreen.dart';
@@ -16,6 +18,7 @@ import 'screens/Account.dart';
 import 'screens/ColumnChart.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+/*
 void main() {
   runApp(const MyApp());
 }
@@ -78,8 +81,8 @@ class _MainPageState extends State<MainPage> {
         ),
       );
 }
+*/
 
-/*
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -102,4 +105,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-*/

@@ -1,4 +1,3 @@
-
 class Category {
   final String icon;
   final String title;
