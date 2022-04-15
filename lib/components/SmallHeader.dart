@@ -12,6 +12,7 @@ class SmallHeader extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return AppBar(
+      automaticallyImplyLeading: false,
       centerTitle: true,
       title: Padding(
         padding: EdgeInsets.only(top: 10),
@@ -41,29 +42,25 @@ class SmallHeader extends StatelessWidget with PreferredSizeWidget {
           ),
         ),
       ),
-      leading: IconButton(
-        padding: EdgeInsets.only(left: 32, top: 10),
-        iconSize: 30,
-        alignment: Alignment.center,
-        icon: this.icon,
-        onPressed: () => {
-          // Trường hợp là icon back
-          if (this.icon.toString() == 'Icon(IconData(U+0E793))')
-            {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Reminder(title: 'Nhắc nhở'))),
-            }
-          // Trường hợp là icon menu
-          else if (this.icon.toString() == 'Icon(IconData(U+0E3DC))')
-            {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Reminder(title: 'Tạo lời nhắc'))),
-            }
-        },
+      leading: Builder(
+        builder: (context) => Container(
+          child: IconButton(
+            padding: EdgeInsets.only(left: 32, top: 10),
+            iconSize: 30,
+            alignment: Alignment.center,
+            icon: this.icon,
+            onPressed: () => {
+              // Trường hợp là icon back
+              if (this.icon.toString() == 'Icon(IconData(U+0E793))') {
+                  Navigator.pop(context),
+              }
+              // Trường hợp là icon menu
+              else if (this.icon.toString() == 'Icon(IconData(U+0E3DC))') {
+                Scaffold.of(context).openDrawer(),
+              }
+            },
+          ),
+        ),
       ),
     );
   }

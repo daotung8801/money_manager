@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/ButtonPrimary.dart';
 import '../components/Category.dart';
 import '../components/CategoryVWidget.dart';
+import '../components/NavigationDrawerWidget.dart';
 import '../components/TitleText1.dart';
 
 class Account extends StatelessWidget {
@@ -12,18 +13,24 @@ class Account extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      drawer: NavigationDrawerWidget(),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         title: TitleText1(text: 'Tài khoản', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
         backgroundColor: Colors.transparent,
         toolbarHeight: 72,
         elevation: 0.0,
-        leading: IconButton(
-          padding: EdgeInsets.only(left: 32),
-          iconSize: 30,
-          alignment: Alignment.center,
-          icon: Icon(Icons.menu),
-          onPressed: () => {},
+        leading: Builder(
+          builder: (context) => Container(
+            child: IconButton(
+              padding: EdgeInsets.only(left: 32),
+              iconSize: 30,
+              icon: Icon(Icons.menu),
+              tooltip: 'Menu',
+              onPressed: () => {Scaffold.of(context).openDrawer()},
+            ),
+          ),
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/NavigationDrawerWidget.dart';
 import '../components/SmallHeader.dart';
 import '../components/InputText1.dart';
 import '../components/ButtonPrimary.dart';
@@ -11,6 +12,7 @@ class ContactScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       resizeToAvoidBottomInset: false,
       appBar: SmallHeader(title: 'Liên hệ', icon: Icon(Icons.menu)),
       body: Column(

@@ -1,14 +1,30 @@
 import 'dart:ui';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:money_manager/components/TitleText1.dart';
-import 'package:money_manager/screen/People.dart';
-import 'package:money_manager/screen/User.dart';
+import 'package:money_manager/screens/ContactScreen.dart';
+import 'package:money_manager/screens/Currency.dart';
+import 'package:money_manager/screens/People.dart';
+import 'package:money_manager/screens/User.dart';
+import 'package:money_manager/screens/CategoryScreen.dart';
+import 'package:money_manager/screens/ColumnChart.dart';
 import 'package:money_manager/screens/HomeScreen.dart';
+import 'package:money_manager/screens/Reminder.dart';
+import 'package:share/share.dart';
+
+import '../screens/Account.dart';
+import 'PopUpRatingApp.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 16);
+
+  void _showRatingDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: true, // set to false if you want to force a rating
+        builder: (context) {
+          return PopUpRatingApp();
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -170,24 +186,22 @@ class NavigationDrawerWidget extends StatelessWidget {
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomeScreen(
-            title: '',
-          ),
+          builder: (context) => HomeScreen(title: 'Ngân sách'),
         ));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
+          builder: (context) => Account(title: 'Tài khoản'),
         ));
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
+          builder: (context) => ColumnChart(title: 'Biểu đồ'),
         ));
         break;
       case 3:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
+          builder: (context) => CategoryScreen(title: 'Danh mục'),
         ));
         break;
       case 4:
@@ -197,12 +211,12 @@ class NavigationDrawerWidget extends StatelessWidget {
         break;
       case 5:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
+          builder: (context) => Reminder(title: 'Nhắc nhở'),
         ));
         break;
       case 6:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
+          builder: (context) => Currency(title: 'Tiền tệ'),
         ));
         break;
       case 7:
@@ -216,18 +230,15 @@ class NavigationDrawerWidget extends StatelessWidget {
         ));
         break;
       case 9:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
-        ));
+        Share.share(
+            'https://play.google.com/store/apps/details?id=ru.innim.my_finance');
         break;
       case 10:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
-        ));
+        _showRatingDialog(context);
         break;
       case 11:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
+          builder: (context) => ContactScreen(title: 'Liên hệ'),
         ));
         break;
     }

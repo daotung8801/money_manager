@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../components/CategoryGridView.dart';
+import '../components/NavigationDrawerWidget.dart';
 import '../components/TitleText1.dart';
 import '../components/Category.dart';
 import 'package:http/http.dart' as http;
@@ -31,22 +32,28 @@ class CategoryScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-            centerTitle: true,
-            title: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: TitleText1(text: 'Danh mục', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          title: Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: TitleText1(text: 'Danh mục', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
+          ),
+          backgroundColor: Colors.transparent,
+          toolbarHeight: 100,
+          elevation: 0.0,
+          leading: Builder(
+            builder: (context) => Container(
+              child: IconButton(
+                padding: EdgeInsets.only(left: 32, top: 10),
+                iconSize: 30,
+                icon: Icon(Icons.menu),
+                tooltip: 'Menu',
+                onPressed: () => {Scaffold.of(context).openDrawer()},
+              ),
             ),
-            backgroundColor: Colors.transparent,
-            toolbarHeight: 100,
-            elevation: 0.0,
-            leading: IconButton(
-              padding: EdgeInsets.only(left: 32, top: 10),
-              iconSize: 30,
-              icon: Icon(Icons.menu),
-              tooltip: 'Menu',
-              onPressed: () => {},
-            ),
+          ),
             flexibleSpace: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(

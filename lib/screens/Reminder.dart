@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/CreateButton.dart';
+import '../components/NavigationDrawerWidget.dart';
 import '../components/SmallHeader.dart';
 import '../components/TitleText1.dart';
 
@@ -10,6 +11,7 @@ class Reminder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       resizeToAvoidBottomInset: false,
       appBar: SmallHeader(title: 'Nhắc nhở', icon: Icon(Icons.menu)),
       body: Column(

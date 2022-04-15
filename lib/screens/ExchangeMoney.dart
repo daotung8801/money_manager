@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import '../components/PopUpRatingApp.dart';
 import '../components/ExpenseTabBar.dart';
 import '../components/InComeTabBar.dart';
 import '../components/PopUpNotification1.dart';
 import '../components/SearchItem.dart';
 import '../components/TitleText1.dart';
-import 'package:share/share.dart';
+import 'HomeScreen.dart';
 
 class ExchangeMoney extends StatelessWidget {
   ExchangeMoney({Key? key, required this.title}) : super(key: key);
@@ -17,16 +16,6 @@ class ExchangeMoney extends StatelessWidget {
       builder: (context) {
         return PopUpNotification1();
       },
-    );
-  }
-
-  void _showRatingDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierDismissible: true, // set to false if you want to force a rating
-      builder: (context) {
-        return PopUpRatingApp();
-      }
     );
   }
 
@@ -48,10 +37,13 @@ class ExchangeMoney extends StatelessWidget {
           leading: IconButton(
             padding: EdgeInsets.only(left: 32, top: 10),
             iconSize: 30,
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.arrow_back_sharp),
             tooltip: 'Menu',
             onPressed: () => {
-              Share.share('https://play.google.com/store/apps/details?id=ru.innim.my_finance')
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+              builder: (context) => HomeScreen(title: 'Ngân sách'))),
             },
           ),
           actions: <Widget>[
