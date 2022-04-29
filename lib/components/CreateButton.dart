@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:money_manager/screens/CreateReminder.dart';
 import 'TitleText1.dart';
 
 class CreateButton extends StatelessWidget {
@@ -11,12 +10,7 @@ class CreateButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => CreateReminder(title: 'Tạo lời nhắc')));
-      },
+      onTap: () {},
       child: Row(children: <Widget>[
         Padding(
           padding: EdgeInsets.only(left: 0, top: 0),

@@ -30,12 +30,12 @@ class ButtonPrimary extends StatelessWidget {
       height: this.height,
       child: RaisedButton(
         onPressed: () {
-          if (this.screenName == 'CreateReminder') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Reminder(title: 'Nhắc nhở')));
-          }
+          // if (this.screenName == 'CreateReminder') {
+          //   Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //           builder: (context) => Reminder()));
+          // }
           if(this.screenName == 'LoginScreen') {
             Navigator.push(
                 context,

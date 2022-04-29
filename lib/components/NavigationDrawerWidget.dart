@@ -211,7 +211,7 @@ class NavigationDrawerWidget extends StatelessWidget {
         break;
       case 5:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Reminder(title: 'Nhắc nhở'),
+          builder: (context) => Reminder(),
         ));
         break;
       case 6:
