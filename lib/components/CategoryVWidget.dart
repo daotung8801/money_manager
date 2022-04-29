@@ -51,7 +51,7 @@ class CategoryVWidget extends StatelessWidget {
                         height: height,
                         child: CategoryIconWidget(
                           icon: this.category.icon,
-                          bgColor: this.category.bgColor,
+                          bgColor: this.category.color,
                           iconColor: this.iconColor,
                           buttonSize: this.iconSize,
                           borderRadius: this.iconBorderRadius,
@@ -83,7 +83,7 @@ class CategoryVWidget extends StatelessWidget {
                         width: width,
                         height: height,
                         child: Text(
-                          this.category.title,
+                          this.category.description,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
                           style: TextStyle(

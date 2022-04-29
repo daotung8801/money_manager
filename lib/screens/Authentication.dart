@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:money_manager/screens/CategoryScreen.dart';
+import 'package:money_manager/screens/HomeScreen.dart';
 import 'package:money_manager/screens/RegisterScreen.dart';
 
 import '../components/ButtonPrimary.dart';
@@ -85,21 +87,22 @@ class Authentication extends StatelessWidget {
           },
         );
       case ApplicationLoginState.loggedIn:
-        return Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 24, bottom: 8),
-              child: StyledElevatedButton(
-                width: 343,
-                height: 51,
-                onPressed: () {
-                  signOut();
-                },
-                child: const Text('LOGOUT'),
-              ),
-            ),
-          ],
-        );
+        return HomeScreen(title: 'title');
+        // return Row(
+        //   children: [
+        //     Padding(
+        //       padding: const EdgeInsets.only(left: 24, bottom: 8),
+        //       child: StyledElevatedButton(
+        //         width: 343,
+        //         height: 51,
+        //         onPressed: () {
+        //           signOut();
+        //         },
+        //         child: const Text('LOGOUT'),
+        //       ),
+        //     ),
+        //   ],
+        // );
       default:
         return Row(
           children: const [

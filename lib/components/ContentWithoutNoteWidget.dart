@@ -80,7 +80,7 @@ class ContentWithoutNoteWidget extends StatelessWidget {
               width: 188.0,
               height: 30.0,
               child: CategoryHWidget(
-                category: new Category('💼', 'Kinh doanh', '0xFFE0E0E0'),
+                category: new Category(icon: '💼', description: 'Kinh doanh', color: '0xFFE0E0E0'),
                 hasImage: this.hasImage,
               ),
             )

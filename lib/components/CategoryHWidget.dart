@@ -30,7 +30,7 @@ class CategoryHWidget extends StatelessWidget {
                 height: 30.0,
                 child: CategoryIconWidget(
                   icon: this.category.icon,
-                  bgColor: this.category.bgColor,
+                  bgColor: this.category.color,
                   buttonSize: CategoryIconWidget.MEDIUM,
                 ),
               ),
@@ -46,7 +46,7 @@ class CategoryHWidget extends StatelessWidget {
                     y: 1.00,
                     z: 0,
                     child: Text(
-                      this.category.title,
+                      this.category.description,
                       overflow: TextOverflow.visible,
                       textAlign: TextAlign.left,
                       style: TextStyle(

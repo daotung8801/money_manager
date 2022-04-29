@@ -17,7 +17,14 @@ class Account extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: TitleText1(text: 'Tài khoản', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 255, g: 255, b: 255),
+        title: TitleText1(
+            text: 'Tài khoản',
+            fontFamily: 'Inter',
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            r: 255,
+            g: 255,
+            b: 255),
         backgroundColor: Colors.transparent,
         toolbarHeight: 72,
         elevation: 0.0,
@@ -53,26 +60,48 @@ class Account extends StatelessWidget {
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 25),
-              child: TitleText1(text: 'Tổng cộng', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.normal, r: 127, g: 130, b: 103),
+              child: TitleText1(
+                  text: 'Tổng cộng',
+                  fontFamily: 'Inter',
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
+                  r: 127,
+                  g: 130,
+                  b: 103),
             ),
           ),
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 10),
-              child: TitleText1(text: '20,000,000 đ', fontFamily: 'Inter', fontSize: 25, fontWeight: FontWeight.bold, r: 0, g: 0, b: 0),
+              child: TitleText1(
+                  text: '20,000,000 đ',
+                  fontFamily: 'Inter',
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  r: 0,
+                  g: 0,
+                  b: 0),
             ),
           ),
           Row(children: [
             Center(
               child: Padding(
                 padding: EdgeInsets.only(left: 80, top: 15),
-                child: CategoryVWidget(category: Category('⟲', 'Lịch sử', '0xFF46BF8C'), iconColor: '0xFFFFFFFF'),
+                child: CategoryVWidget(
+                    category: Category(
+                        icon: '⟲', description: 'Lịch sử', color: '0xFF46BF8C'),
+                    iconColor: '0xFFFFFFFF'),
               ),
             ),
             Center(
               child: Padding(
                 padding: EdgeInsets.only(left: 80, top: 15),
-                child: CategoryVWidget(category: Category('⇄', 'Chuyển tiền', '0xFF46BF8C'), iconColor: '0xFFFFFFFF'),
+                child: CategoryVWidget(
+                    category: Category(
+                        icon: '⇄',
+                        description: 'Chuyển tiền',
+                        color: '0xFF46BF8C'),
+                    iconColor: '0xFFFFFFFF'),
               ),
             ),
           ]),
@@ -86,8 +115,16 @@ class Account extends StatelessWidget {
                   onPressed: () {
                     print('Raise button');
                   },
-                  icon: Icon(Icons.attach_money, color: Color.fromARGB(255, 127, 130, 103)),
-                  label: TitleText1(text: 'Chính            20,000,000 đ', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold, r: 127, g: 130, b: 103),
+                  icon: Icon(Icons.attach_money,
+                      color: Color.fromARGB(255, 127, 130, 103)),
+                  label: TitleText1(
+                      text: 'Chính            20,000,000 đ',
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      r: 127,
+                      g: 130,
+                      b: 103),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
@@ -100,10 +137,18 @@ class Account extends StatelessWidget {
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 280),
-              child: SizedBox (
+              child: SizedBox(
                 width: 93,
                 height: 51,
-                child: ButtonPrimary(text: 'Thêm', r: 35, g: 111, b: 87, radius: 30, weight: 109, height: 51, screenName: 'Account'),
+                child: ButtonPrimary(
+                    text: 'Thêm',
+                    r: 35,
+                    g: 111,
+                    b: 87,
+                    radius: 30,
+                    weight: 109,
+                    height: 51,
+                    screenName: 'Account'),
               ),
             ),
           ),

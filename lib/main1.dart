@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:money_manager/components/Category.dart';
+import 'package:money_manager/screens/CategoryScreen.dart';
 import 'package:provider/provider.dart';
 
 import 'components/TitleText1.dart';
@@ -84,6 +86,12 @@ class ApplicationState extends ChangeNotifier {
     FirebaseAuth.instance.userChanges().listen((user) {
       if (user != null) {
         _loginState = ApplicationLoginState.loggedIn;
+      }
+    });
+
+    FirebaseAuth.instance.userChanges().listen((user) {
+      if (user != null) {
+        _loginState = ApplicationLoginState.loggedIn;
         _guestBookSubscription = FirebaseFirestore.instance
             .collection('guestbook')
             .orderBy('timestamp', descending: true)
@@ -100,6 +108,21 @@ class ApplicationState extends ChangeNotifier {
           }
           notifyListeners();
         });
+
+        _categorySubscription = FirebaseFirestore.instance
+            .collection('userData/${user.uid}/categories')
+            .snapshots()
+            .listen((snapshot) {
+          for (final document in snapshot.docs) {
+            _categories.add(Category(
+                index: document.data()['index'] as int,
+                icon: document.data()['icon'] as String,
+                color: document.data()['color'] as String,
+                description: document.data()['description'] as String));
+          }
+          notifyListeners();
+        });
+
         _attendingSubscription = FirebaseFirestore.instance
             .collection('attendees')
             .doc(user.uid)
@@ -121,6 +144,7 @@ class ApplicationState extends ChangeNotifier {
         _guestBookMessages = [];
         _guestBookSubscription?.cancel();
         _attendingSubscription?.cancel();
+        _categorySubscription?.cancel();
       }
       notifyListeners();
     });
@@ -135,7 +159,11 @@ class ApplicationState extends ChangeNotifier {
   String? get email => _email;
 
   StreamSubscription<QuerySnapshot>? _guestBookSubscription;
+  StreamSubscription<QuerySnapshot>? _categorySubscription;
   List<GuestBookMessage> _guestBookMessages = [];
+  List<Category> _categories = [];
+
+  List<Category> get categories => _categories;
 
   List<GuestBookMessage> get guestBookMessages => _guestBookMessages;
 
@@ -233,6 +261,19 @@ class ApplicationState extends ChangeNotifier {
     });
   }
 }
+
+// class Category {
+//   Category(
+//       {required this.index,
+//       required this.icon,
+//       required this.color,
+//       required this.description});
+//
+//   int index;
+//   String icon;
+//   String color;
+//   String description;
+// }
 
 class GuestBookMessage {
   GuestBookMessage({required this.name, required this.message});
