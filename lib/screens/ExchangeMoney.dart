@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:money_manager/screens/AddTransactionScreen.dart';
+import 'package:money_manager/screens/AddTransactionScreen1.dart';
 import '../components/CustomPageRoute.dart';
 import '../components/ExpenseTabBar.dart';
-import '../components/InComeTabBar.dart';
 import '../components/PopUpNotification1.dart';
 import '../components/SearchItem.dart';
 import '../components/TitleText1.dart';
-import 'AddTransactionScreen.dart';
+import 'AddTransactionScreen1.dart';
 
 class ExchangeMoney extends StatelessWidget {
   ExchangeMoney({Key? key, required this.typeIndex, required this.timeIndex})
@@ -126,7 +125,7 @@ class ExchangeMoney extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(CustomPageRoute(
                       direction: AxisDirection.up,
-                      child: AddTransactionScreen(
+                      child: AddTransactionScreen1(
                         index: DefaultTabController.of(context)!.index,
                       )));
                 }),

@@ -10,7 +10,6 @@ import 'package:money_manager/components/Account.dart';
 import 'package:money_manager/components/Transaction.dart';
 import 'package:money_manager/screens/AccountDetailScreen.dart';
 import 'package:money_manager/screens/AddAccountScreen.dart';
-import 'package:money_manager/screens/AddTransactionScreen.dart';
 import 'package:money_manager/screens/ColumnChart.dart';
 import 'package:money_manager/screens/ContactScreen.dart';
 import 'package:provider/provider.dart';

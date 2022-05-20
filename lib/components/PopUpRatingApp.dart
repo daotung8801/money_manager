@@ -22,7 +22,7 @@ class PopUpRatingApp extends StatelessWidget {
       message: Text(
         'Vui lòng đánh giá chúng tôi năm sao trong Google Play!',
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 15),
+        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
       ),
       // your app's logo?
       // image: const FlutterLogo(size: 100),

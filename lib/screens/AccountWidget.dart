@@ -71,9 +71,9 @@ class AccountWidget extends StatelessWidget {
                   fontFamily: 'Inter',
                   fontSize: 18,
                   fontWeight: FontWeight.normal,
-                  r: 127,
-                  g: 130,
-                  b: 103),
+                  r: 0,
+                  g: 0,
+                  b: 0),
             ),
           ),
           Center(
@@ -83,7 +83,7 @@ class AccountWidget extends StatelessWidget {
                   text: '${ApplicationState.getInstance.getTotalAmount()} ₫',
                   fontFamily: 'Inter',
                   fontSize: 25,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.normal,
                   r: 0,
                   g: 0,
                   b: 0),
@@ -162,7 +162,7 @@ class AccountWidget extends StatelessWidget {
           ),
           Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 280.h),
+              padding: EdgeInsets.only(top: 320.h),
               child: SizedBox(
                 width: 93.w,
                 height: 51.h,
@@ -181,7 +181,7 @@ class AccountWidget extends StatelessWidget {
                       g: 255,
                       b: 255),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.r)),
+                    borderRadius: BorderRadius.all(Radius.circular(30.r)),
                   ),
                   color: Color.fromARGB(255, 35, 111, 87),
                 ),

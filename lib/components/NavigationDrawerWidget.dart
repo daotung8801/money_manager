@@ -87,12 +87,12 @@ class NavigationDrawerWidget extends StatelessWidget {
                   onClicked: () =>
                       selectedItem(context, appState, Screen.category),
                 ),
-                buildMenuItem(
-                  text: 'Thanh toán thông thường',
-                  icon: Icons.paid,
-                  onClicked: () =>
-                      selectedItem(context, appState, Screen.payment),
-                ),
+                // buildMenuItem(
+                //   text: 'Thanh toán thông thường',
+                //   icon: Icons.paid,
+                //   onClicked: () =>
+                //       selectedItem(context, appState, Screen.payment),
+                // ),
                 buildMenuItem(
                   text: 'Nhắc nhở',
                   icon: Icons.notifications,
@@ -105,17 +105,17 @@ class NavigationDrawerWidget extends StatelessWidget {
                   onClicked: () =>
                       selectedItem(context, appState, Screen.currency),
                 ),
-                buildMenuItem(
-                  text: 'Cài đặt',
-                  icon: Icons.settings,
-                  onClicked: () =>
-                      selectedItem(context, appState, Screen.setting),
-                ),
-                buildMenuItem(
-                  text: 'Tắt quảng cáo',
-                  icon: Icons.app_blocking,
-                  onClicked: () => selectedItem(context, appState, Screen.ads),
-                ),
+                // buildMenuItem(
+                //   text: 'Cài đặt',
+                //   icon: Icons.settings,
+                //   onClicked: () =>
+                //       selectedItem(context, appState, Screen.setting),
+                // ),
+                // buildMenuItem(
+                //   text: 'Tắt quảng cáo',
+                //   icon: Icons.app_blocking,
+                //   onClicked: () => selectedItem(context, appState, Screen.ads),
+                // ),
                 buildMenuItem(
                   text: 'Chia sẻ với bạn bè',
                   icon: Icons.share,
@@ -150,7 +150,7 @@ class NavigationDrawerWidget extends StatelessWidget {
       InkWell(
         onTap: onClicked,
         child: Container(
-          padding: padding.add(const EdgeInsets.symmetric(vertical: 16)),
+          padding: padding.add(const EdgeInsets.symmetric(vertical: 20)),
           child: Row(children: [
             CircleAvatar(
               radius: 30.r,

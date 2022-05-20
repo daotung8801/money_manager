@@ -26,14 +26,14 @@ class PopUpNotification1 extends StatelessWidget {
       ]),
       actions: <Widget>[
         FlatButton(
-          padding: EdgeInsets.only(right: 80.w, bottom: 20.h),
+          padding: EdgeInsets.only(right: 70.w, bottom: 10.h),
           child: TitleText1(text: 'Hủy', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold, r: 28, g: 169, b: 113),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         FlatButton(
-          padding: EdgeInsets.only(right: 55.w, bottom: 20.h),
+          padding: EdgeInsets.only(right: 50.w, bottom: 10.h),
           child: TitleText1(text: 'Xuất', fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold, r: 28, g: 169, b: 113),
           onPressed: () {
             Navigator.of(context).pop();
