@@ -223,7 +223,7 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
                   }
                   _amount = amount;
                   return TitleText1(
-                      text: 'Tổng cộng: ${_amount} VNĐ',
+                      text: 'Tổng cộng: ${_amount} đ',
                       fontFamily: 'Inter',
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -444,7 +444,7 @@ class AmountForCategoryWidget extends StatelessWidget {
                 )
               : Text('Lỗi: Không tìm thấy danh mục')),
           Text('$percentage%'),
-          Text('$amount VNĐ'),
+          Text('$amount đ'),
         ],
       ),
     );

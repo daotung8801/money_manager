@@ -83,7 +83,7 @@ class BudgetScreen extends StatelessWidget {
                                 child: TitleText1(
                                     text: 'Hôm nay',
                                     fontFamily: 'Inter',
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.bold,
                                     r: 198,
                                     g: 198,
@@ -135,7 +135,7 @@ class BudgetScreen extends StatelessWidget {
                                 padding: EdgeInsets.only(left: 18.w, top: 10.h),
                                 child: TitleText1(
                                     text: (appState.remainingAmount != null
-                                        ? 'Số dư khả dụng: ${appState.remainingAmount} VNĐ'
+                                        ? 'Số dư khả dụng: ${appState.remainingAmount} đ'
                                         : 'SOS'),
                                     fontFamily: 'Inter',
                                     fontSize: 18,

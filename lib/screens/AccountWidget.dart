@@ -146,7 +146,7 @@ class AccountWidget extends StatelessWidget {
           // ),
           Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 30.h),
+              padding: EdgeInsets.only(left: 78.w, top: 30.h),
               child: SizedBox(
                 width: 344.w,
                 height: 53.h,
@@ -218,7 +218,7 @@ class AccountInfo extends StatelessWidget {
             hasImage: false,
           ),
           (account.visible ? Text('') : Text(':)')),
-          Text('${account.value} VNĐ'),
+          Text('${account.value} đ'),
         ],
       ),
     );

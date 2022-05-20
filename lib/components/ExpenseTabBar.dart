@@ -211,7 +211,7 @@ class _TransactionsState extends State<TransactionsWidget> {
                   }
                   _amount = amount;
                   return TitleText1(
-                      text: 'Tổng cộng: ${_amount} VNĐ',
+                      text: 'Tổng cộng: ${_amount} đ',
                       fontFamily: 'Inter',
                       fontSize: 15,
                       fontWeight: FontWeight.bold,

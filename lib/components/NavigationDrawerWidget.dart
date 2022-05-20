@@ -46,7 +46,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                             : '')
                         : 'SOS'),
                     balance: (appState.user != null
-                        ? 'Số dư: ${appState.remainingAmount} VNĐ'
+                        ? 'Số dư: ${appState.remainingAmount} đ'
                         : 'SOS'),
                     onClicked: () => Navigator.of(context).push(CustomPageRoute(
                         direction: AxisDirection.right, child: UserPage(
