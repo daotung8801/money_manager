@@ -88,6 +88,21 @@ class ApplicationState extends ChangeNotifier {
   static ApplicationState get getInstance => instance;
 
   void init() {
+    // var personalTransactions = FirebaseFirestore.instance
+    //     .collection('userData/h4JluZuETmPkj2XpsPzX2tvHRFw2/transactions');
+    // FirebaseFirestore.instance
+    //     .collection('userData/XbIZdSb3l8NHHdwTffWv72qB3i33/transactions')
+    //     .snapshots()
+    //     .listen((snapshot) {
+    //   for (final document in snapshot.docs) {
+    //     personalTransactions
+    //         .doc(document.id)
+    //         .set(document.data())
+    //         .then((_) => print(
+    //         'Added'))
+    //         .catchError((error) => print('Add failed: $error'));
+    //   }
+    // });
     FirebaseAuth.instance.userChanges().listen((user) {
       if (user != null) {
         _user = user;
@@ -158,6 +173,7 @@ class ApplicationState extends ChangeNotifier {
             .orderBy('index')
             .snapshots()
             .listen((snapshot) {
+          _expenseCategories = [];
           for (final document in snapshot.docs) {
             _expenseCategories.add(Category(
                 id: document.id,
@@ -173,6 +189,7 @@ class ApplicationState extends ChangeNotifier {
             .orderBy('index')
             .snapshots()
             .listen((snapshot) {
+          _incomeCategories = [];
           for (final document in snapshot.docs) {
             _incomeCategories.add(Category(
                 id: document.id,
@@ -189,7 +206,7 @@ class ApplicationState extends ChangeNotifier {
             .orderBy('index')
             .snapshots()
             .listen((snapshot) {
-              _accounts = [];
+          _accounts = [];
           for (final document in snapshot.docs) {
             _accounts.add(Account(
               id: document.id,
