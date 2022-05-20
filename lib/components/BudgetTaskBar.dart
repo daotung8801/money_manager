@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_manager/components/CategoryHWidget.dart';
@@ -448,11 +449,17 @@ class AmountForCategoryWidget extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(left: 1.w, top: 30.h),
-            child: Text('$percentage'.length < 2 ? '$percentage%   ' : '$percentage%'),
+            child: Container(
+              width: 40,
+              child: Text('$percentage%', textAlign: TextAlign.right,),
+            ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 70.w, top: 30.h, right: 23.w),
-            child: Text('$amount đ'),
+            padding: EdgeInsets.only(left: 10.w, top: 30.h, right: 23.w),
+            child: Container(
+              width: 100,
+              child: Text('$amount đ', textAlign: TextAlign.right,),
+            ),
           ),
         ],
       ),
