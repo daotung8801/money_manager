@@ -436,15 +436,24 @@ class AmountForCategoryWidget extends StatelessWidget {
       onTap: onPress,
       child: Row(
         children: [
-          (ApplicationState.getInstance.getCategory(categoryID) != null
-              ? CategoryHWidget(
-                  category:
-                      ApplicationState.getInstance.getCategory(categoryID)!,
-                  hasImage: false,
-                )
-              : Text('Lỗi: Không tìm thấy danh mục')),
-          Text('$percentage%'),
-          Text('$amount đ'),
+          Padding(
+            padding: EdgeInsets.only(left: 23.w, top: 30.h),
+            child: (ApplicationState.getInstance.getCategory(categoryID) != null
+                ? CategoryHWidget(
+                    category:
+                        ApplicationState.getInstance.getCategory(categoryID)!,
+                    hasImage: false,
+                  )
+                : Text('Lỗi: Không tìm thấy danh mục')),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 1.w, top: 30.h),
+            child: Text('$percentage'.length < 2 ? '$percentage%   ' : '$percentage%'),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 70.w, top: 30.h, right: 23.w),
+            child: Text('$amount đ'),
+          ),
         ],
       ),
     );
