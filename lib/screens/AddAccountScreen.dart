@@ -12,7 +12,7 @@ import '../components/TitleText1.dart';
 class AddAccountScreen extends StatelessWidget {
   AddAccountScreen({Key? key, required this.title}) : super(key: key);
   final String title;
-  static String money = '800.000',
+  static String money = '0',
       date = '10 tháng 3, 2022',
       reminder = 'Nạp game lửa chùa';
 
@@ -77,7 +77,7 @@ class AddAccountScreen extends StatelessWidget {
                         text: 'đ',
                         fontFamily: 'Inter',
                         fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
                         r: 35,
                         g: 111,
                         b: 87)),
@@ -152,7 +152,7 @@ class AddAccountScreen extends StatelessWidget {
                       text: 'Không bao gồm tổng số dư',
                       fontFamily: 'Inter',
                       fontSize: 17,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.normal,
                       r: 0,
                       g: 0,
                       b: 0
@@ -169,10 +169,26 @@ class AddAccountScreen extends StatelessWidget {
            Center(
              child: Padding(
                padding: EdgeInsets.only(top: 30.h, bottom: 30.h),
-               child: SizedBox (
-                 width: 93,
-                 height: 51,
-                 child: ButtonPrimary(text: 'Thêm', r: 35, g: 111, b: 87, radius: 30, weight: 109, height: 51, screenName: 'InComeTabBar'),
+               child: SizedBox(
+                 width: 93.w,
+                 height: 51.h,
+                 child: RaisedButton(
+                   onPressed: () {
+                    Navigator.pop(context);
+                   },
+                   child: TitleText1(
+                       text: 'Thêm',
+                       fontFamily: 'Inter',
+                       fontSize: 15.sp,
+                       fontWeight: FontWeight.bold,
+                       r: 255,
+                       g: 255,
+                       b: 255),
+                   shape: RoundedRectangleBorder(
+                     borderRadius: BorderRadius.all(Radius.circular(30.r)),
+                   ),
+                   color: Color.fromARGB(255, 35, 111, 87),
+                 ),
                ),
              ),
            ),

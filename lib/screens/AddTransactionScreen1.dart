@@ -7,15 +7,15 @@ import '../components/TitleText1.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:date_picker_timeline/date_picker_widget.dart';
 
-class AddTransactionScreen extends StatefulWidget {
-  const AddTransactionScreen({Key? key, required this.index}) : super(key: key);
+class AddTransactionScreen1 extends StatefulWidget {
+  const AddTransactionScreen1({Key? key, required this.index}) : super(key: key);
 
   final int index;
   @override
   AddTransactionScreenState createState() => AddTransactionScreenState(index: this.index);
 }
 
-class AddTransactionScreenState extends State<AddTransactionScreen> {
+class AddTransactionScreenState extends State<AddTransactionScreen1> {
   AddTransactionScreenState({required this.index});
 
   static String money = '0';
@@ -138,7 +138,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                           text: 'đ',
                           fontFamily: 'Inter',
                           fontSize: 25,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.normal,
                           r: 35,
                           g: 111,
                           b: 87)
@@ -149,7 +149,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Tài khoản',
                         fontFamily: 'Inter',
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                         r: 102,
                         g: 102,
@@ -160,7 +160,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Chưa chọn',
                         fontFamily: 'Inter',
-                        fontSize: 19,
+                        fontSize: 17,
                         fontWeight: FontWeight.normal,
                         r: 35,
                         g: 111,
@@ -171,7 +171,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Danh mục',
                         fontFamily: 'Inter',
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                         r: 102,
                         g: 102,
@@ -186,7 +186,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Ghi chú',
                         fontFamily: 'Inter',
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                         r: 102,
                         g: 102,
@@ -202,7 +202,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Ảnh',
                         fontFamily: 'Inter',
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                         r: 102,
                         g: 102,
@@ -265,7 +265,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                           text: 'đ',
                           fontFamily: 'Inter',
                           fontSize: 25,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.normal,
                           r: 35,
                           g: 111,
                           b: 87)
@@ -276,7 +276,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Tài khoản',
                         fontFamily: 'Inter',
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                         r: 102,
                         g: 102,
@@ -287,7 +287,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Chưa chọn',
                         fontFamily: 'Inter',
-                        fontSize: 19,
+                        fontSize: 17,
                         fontWeight: FontWeight.normal,
                         r: 35,
                         g: 111,
@@ -298,7 +298,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Danh mục',
                         fontFamily: 'Inter',
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                         r: 102,
                         g: 102,
@@ -313,7 +313,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Ghi chú',
                         fontFamily: 'Inter',
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                         r: 102,
                         g: 102,
@@ -329,7 +329,7 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                     child: TitleText1(
                         text: 'Ảnh',
                         fontFamily: 'Inter',
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                         r: 102,
                         g: 102,

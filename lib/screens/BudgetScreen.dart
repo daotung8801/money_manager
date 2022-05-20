@@ -126,7 +126,7 @@ class BudgetScreen extends StatelessWidget {
                                             : '${(balanceChanges ~/ 100000) / 10} Tr ₫'),
                                         fontFamily: 'Inter',
                                         fontSize: 22,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.normal,
                                         r: 255,
                                         g: 255,
                                         b: 255);

@@ -455,7 +455,7 @@ class AmountForCategoryWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 10.w, top: 30.h, right: 23.w),
+            padding: EdgeInsets.only(left: 10.w, top: 30.h, right: 17.w),
             child: Container(
               width: 100,
               child: Text((amount<1000000?'$amount ₫':'${(amount ~/ 100000)/10} Tr ₫'), textAlign: TextAlign.right,),
