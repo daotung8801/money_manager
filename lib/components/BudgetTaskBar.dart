@@ -224,7 +224,7 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
                   }
                   _amount = amount;
                   return TitleText1(
-                      text: 'Tổng cộng: ${_amount} đ',
+                      text: (amount<1000000?'Tổng cộng: $_amount ₫':'Tổng cộng: ${(_amount ~/ 100000)/10} Tr ₫'),
                       fontFamily: 'Inter',
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -458,7 +458,7 @@ class AmountForCategoryWidget extends StatelessWidget {
             padding: EdgeInsets.only(left: 10.w, top: 30.h, right: 23.w),
             child: Container(
               width: 100,
-              child: Text((amount<1000000?'$amount đ':'${(amount ~/ 100000)/10} Tr đ'), textAlign: TextAlign.right,),
+              child: Text((amount<1000000?'$amount ₫':'${(amount ~/ 100000)/10} Tr ₫'), textAlign: TextAlign.right,),
             ),
           ),
         ],

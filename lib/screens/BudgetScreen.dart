@@ -121,7 +121,9 @@ class BudgetScreen extends StatelessWidget {
                                       }
                                     }
                                     return TitleText1(
-                                        text: '$balanceChanges ₫',
+                                        text: (balanceChanges < 1000000
+                                            ? '$balanceChanges ₫'
+                                            : '${(balanceChanges ~/ 100000) / 10} Tr ₫'),
                                         fontFamily: 'Inter',
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -135,7 +137,9 @@ class BudgetScreen extends StatelessWidget {
                                 padding: EdgeInsets.only(left: 18.w, top: 10.h),
                                 child: TitleText1(
                                     text: (appState.remainingAmount != null
-                                        ? 'Số dư khả dụng: ${appState.remainingAmount} đ'
+                                        ? (appState.remainingAmount! < 1000000
+                                            ? 'Số dư khả dụng: ${appState.remainingAmount} ₫'
+                                            : 'Số dư khả dụng: ${(appState.remainingAmount! ~/ 100000) / 10} Tr ₫')
                                         : 'SOS'),
                                     fontFamily: 'Inter',
                                     fontSize: 18,
