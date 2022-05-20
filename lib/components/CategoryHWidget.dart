@@ -5,10 +5,10 @@ import 'CategoryIconWidget.dart';
 import '../helpers/transform/transform.dart';
 
 class CategoryHWidget extends StatelessWidget {
-  Category category;
-  bool hasImage;
+  final Category category;
+  final bool hasImage;
 
-  CategoryHWidget({Key? key, required this.category, this.hasImage = false}) : super(key: key);
+  const CategoryHWidget({Key? key, required this.category, this.hasImage = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

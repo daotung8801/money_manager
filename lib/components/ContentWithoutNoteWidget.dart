@@ -32,7 +32,7 @@ class ContentWithoutNoteWidget extends StatelessWidget {
         List<Category> categories = [];
         categories.addAll(appState.expenseCategories);
         categories.addAll(appState.incomeCategories);
-        for (Category e in appState.expenseCategories) {
+        for (Category e in categories) {
           if (categoryID == e.id) {
             category = e;
           }

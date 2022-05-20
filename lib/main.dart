@@ -423,6 +423,14 @@ class ApplicationState extends ChangeNotifier {
     }
   }
 
+  Account? getAccount(String accountID) {
+    for(Account acc in _accounts){
+      if (acc.id == accountID){
+        return acc;
+      }
+    }
+  }
+
   Category? getCategory(String categoryID) {
     List<Category> categories = [];
     categories.addAll(_expenseCategories);
@@ -432,7 +440,6 @@ class ApplicationState extends ChangeNotifier {
         return category;
       }
     }
-    return null;
   }
 
   void signOut() {
