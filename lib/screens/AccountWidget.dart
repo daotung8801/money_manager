@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_manager/components/Account.dart';
@@ -61,6 +62,10 @@ class AccountWidget extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Color.fromARGB(255, 35, 111, 87),
+          onPressed: () {}),
       body: Column(
         children: <Widget>[
           Center(
@@ -144,50 +149,46 @@ class AccountWidget extends StatelessWidget {
           //     ),
           //   ),
           // ),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(left: 78.w, top: 30.h),
-              child: SizedBox(
-                width: 344.w,
-                height: 53.h,
-                child: ListView.builder(
-                    itemCount: ApplicationState.getInstance.accounts.length,
-                    itemBuilder: (BuildContext context,int index) {
-                      return AccountInfo(
-                          account:
-                              ApplicationState.getInstance.accounts[index]);
-                    }),
-              ),
-            ),
-          ),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(top: 320.h),
-              child: SizedBox(
-                width: 93.w,
-                height: 51.h,
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(CustomPageRoute(
-                        direction: AxisDirection.up,
-                        child: AddAccountScreen(title: '')));
-                  },
-                  child: TitleText1(
-                      text: 'Thêm',
-                      fontFamily: 'Inter',
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.bold,
-                      r: 255,
-                      g: 255,
-                      b: 255),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                  ),
-                  color: Color.fromARGB(255, 35, 111, 87),
-                ),
-              ),
-            ),
-          ),
+          Expanded(
+            child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: ApplicationState.getInstance.accounts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: AccountInfo(
+                        account: ApplicationState.getInstance.accounts[index]),
+                  );
+                }),
+          )
+          // Center(
+          //   child: Padding(
+          //     padding: EdgeInsets.only(top: 20.h),
+          //     child: SizedBox(
+          //       width: 93.w,
+          //       height: 51.h,
+          //       child: RaisedButton(
+          //         onPressed: () {
+          //           Navigator.of(context).push(CustomPageRoute(
+          //               direction: AxisDirection.up,
+          //               child: AddAccountScreen(title: '')));
+          //         },
+          //         child: TitleText1(
+          //             text: 'Thêm',
+          //             fontFamily: 'Inter',
+          //             fontSize: 15.sp,
+          //             fontWeight: FontWeight.bold,
+          //             r: 255,
+          //             g: 255,
+          //             b: 255),
+          //         shape: RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.all(Radius.circular(30.r)),
+          //         ),
+          //         color: Color.fromARGB(255, 35, 111, 87),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
@@ -206,20 +207,35 @@ class AccountInfo extends StatelessWidget {
     // TODO: implement build
     return GestureDetector(
       onTap: onPress,
-      child: Row(
-        children: [
-          CategoryHWidget(
-            category: Category(
-                index: account.index,
-                icon: account.icon,
-                id: account.id,
-                color: account.color,
-                description: account.description),
-            hasImage: false,
-          ),
-          (account.visible ? Text('') : Text(':)')),
-          Text('${account.value} đ'),
-        ],
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Row(
+          children: [
+            CategoryHWidget(
+              category: Category(
+                  index: account.index,
+                  icon: account.icon,
+                  id: account.id,
+                  color: account.color,
+                  description: account.description),
+              hasImage: false,
+            ),
+            Container(
+              child: (account.visible
+                  ? Text('')
+                  : Icon(Icons.visibility_off_outlined)),
+              width: 1.0.h,
+            ),
+            Container(
+              child: Text(
+                '${account.value} đ',
+                textAlign: TextAlign.end,
+              ),
+              width: 80.0.w,
+              alignment: Alignment.centerRight,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -27,7 +27,8 @@ class AddTransactionScreen extends StatefulWidget {
       _AddTransactionScreenState(index: this.index);
 }
 
-class _AddTransactionScreenState extends State<AddTransactionScreen> with SingleTickerProviderStateMixin {
+class _AddTransactionScreenState extends State<AddTransactionScreen>
+    with SingleTickerProviderStateMixin {
   _AddTransactionScreenState({required this.index});
 
   final _formKey =
@@ -46,7 +47,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> with Single
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 2,vsync: this, initialIndex: index);
+    _tabController = TabController(length: 2, vsync: this, initialIndex: index);
     selectedExpense = List.filled(
         ApplicationState.getInstance.expenseCategories.length, false);
     selectedIncome = List.filled(
@@ -314,6 +315,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> with Single
                       child: Padding(
                         padding: EdgeInsets.only(left: 16.w, top: 10.h),
                         child: GridView.count(
+                          physics: NeverScrollableScrollPhysics(),
                           crossAxisCount: 4,
                           crossAxisSpacing: 4.0.h,
                           mainAxisSpacing: 4.0.w,
@@ -351,40 +353,49 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> with Single
                           Expanded(
                               child: ToggleButtons(
                             children: <Widget>[
-                              Column(
-                                children: [
-                                  Text(
-                                      '${DateTime.now().day}/${DateTime.now().month}'),
-                                  Text('Hôm nay'),
-                                ],
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                        '${DateTime.now().day}/${DateTime.now().month}'),
+                                    Text('Hôm nay'),
+                                  ],
+                                ),
                               ),
-                              Column(
-                                children: [
-                                  Text(
-                                      '${DateTime.now().subtract(const Duration(days: 1)).day}/${DateTime.now().subtract(const Duration(days: 1)).month}'),
-                                  Text('Hôm qua'),
-                                ],
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                        '${DateTime.now().subtract(const Duration(days: 1)).day}/${DateTime.now().subtract(const Duration(days: 1)).month}'),
+                                    Text('Hôm qua'),
+                                  ],
+                                ),
                               ),
-                              (selectedDate != null &&
-                                      selectedDate!.isBefore(DateTime(
-                                              DateTime.now().year,
-                                              DateTime.now().month,
-                                              DateTime.now().day)
-                                          .subtract(Duration(days: 1)))
-                                  ? Column(
-                                      children: [
-                                        Text(
-                                            '${selectedDate!.day}/${selectedDate!.month}'),
-                                        Text('Đã chọn'),
-                                      ],
-                                    )
-                                  : Column(
-                                      children: [
-                                        Text(
-                                            '${DateTime.now().subtract(const Duration(days: 2)).day}/${DateTime.now().subtract(const Duration(days: 2)).month}'),
-                                        Text('Hai ngày trước'),
-                                      ],
-                                    ))
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: (selectedDate != null &&
+                                        selectedDate!.isBefore(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now().day)
+                                            .subtract(Duration(days: 1)))
+                                    ? Column(
+                                        children: [
+                                          Text(
+                                              '${selectedDate!.day}/${selectedDate!.month}'),
+                                          Text('Đã chọn'),
+                                        ],
+                                      )
+                                    : Column(
+                                        children: [
+                                          Text(
+                                              '${DateTime.now().subtract(const Duration(days: 2)).day}/${DateTime.now().subtract(const Duration(days: 2)).month}'),
+                                          Text('Hai ngày trước'),
+                                        ],
+                                      )),
+                              ),
                             ],
                             onPressed: (int index) {
                               setState(() {
@@ -399,43 +410,48 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> with Single
                             },
                             isSelected: isSelectedDate,
                           )),
-                          IconButton(
-                              onPressed: () async {
-                                DateTime? pickDate = await showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate:
-                                        DateTime(DateTime.now().year - 1),
-                                    lastDate: DateTime(
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            child: IconButton(
+                                onPressed: () async {
+                                  DateTime? pickDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate:
+                                          DateTime(DateTime.now().year - 1),
+                                      lastDate: DateTime(
+                                          DateTime.now().year,
+                                          DateTime.now().month,
+                                          DateTime.now().day),
+                                      builder: (context, child) => Theme(
+                                            data: ThemeData.light().copyWith(
+                                              colorScheme: ColorScheme.light(
+                                                  primary: Color.fromARGB(
+                                                      255, 35, 111, 87)),
+                                            ),
+                                            child: child as Widget,
+                                          ));
+                                  setState(() {
+                                    selectedDate = pickDate;
+                                    DateTime now = DateTime(
                                         DateTime.now().year,
                                         DateTime.now().month,
-                                        DateTime.now().day),
-                                    builder: (context, child) => Theme(
-                                          data: ThemeData.light().copyWith(
-                                            colorScheme: ColorScheme.light(
-                                                primary: Color.fromARGB(
-                                                    255, 35, 111, 87)),
-                                          ),
-                                          child: child as Widget,
-                                        ));
-                                setState(() {
-                                  selectedDate = pickDate;
-                                  DateTime now = DateTime(DateTime.now().year,
-                                      DateTime.now().month, DateTime.now().day);
-                                  if (selectedDate != null) {
-                                    if (selectedDate!.isAtSameMomentAs(now)) {
-                                      isSelectedDate = [true, false, false];
-                                    } else if (selectedDate!.isAtSameMomentAs(
-                                        now.subtract(Duration(days: 1)))) {
-                                      isSelectedDate = [false, true, false];
-                                    } else {
-                                      isSelectedDate = [false, false, true];
+                                        DateTime.now().day);
+                                    if (selectedDate != null) {
+                                      if (selectedDate!.isAtSameMomentAs(now)) {
+                                        isSelectedDate = [true, false, false];
+                                      } else if (selectedDate!.isAtSameMomentAs(
+                                          now.subtract(Duration(days: 1)))) {
+                                        isSelectedDate = [false, true, false];
+                                      } else {
+                                        isSelectedDate = [false, false, true];
+                                      }
                                     }
-                                  }
-                                  selectedDate = selectedDate;
-                                });
-                              },
-                              icon: Icon(Icons.calendar_today))
+                                    selectedDate = selectedDate;
+                                  });
+                                },
+                                icon: Icon(Icons.calendar_today)),
+                          ),
                         ],
                       ),
                     ),
@@ -568,25 +584,27 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> with Single
                           });
                         },
                         child: _selectedAccount == null
-                            ? Text('Chọn tài khoản')
+                            ? Text(
+                                'Chọn tài khoản',
+                              )
                             : CategoryHWidget(
-                          category: Category(
-                              index: ApplicationState.getInstance
-                                  .getAccount(_selectedAccount!)!
-                                  .index,
-                              id: ApplicationState.getInstance
-                                  .getAccount(_selectedAccount!)!
-                                  .id,
-                              icon: ApplicationState.getInstance
-                                  .getAccount(_selectedAccount!)!
-                                  .icon,
-                              color: ApplicationState.getInstance
-                                  .getAccount(_selectedAccount!)!
-                                  .color,
-                              description: ApplicationState.getInstance
-                                  .getAccount(_selectedAccount!)!
-                                  .description),
-                        ),
+                                category: Category(
+                                    index: ApplicationState.getInstance
+                                        .getAccount(_selectedAccount!)!
+                                        .index,
+                                    id: ApplicationState.getInstance
+                                        .getAccount(_selectedAccount!)!
+                                        .id,
+                                    icon: ApplicationState.getInstance
+                                        .getAccount(_selectedAccount!)!
+                                        .icon,
+                                    color: ApplicationState.getInstance
+                                        .getAccount(_selectedAccount!)!
+                                        .color,
+                                    description: ApplicationState.getInstance
+                                        .getAccount(_selectedAccount!)!
+                                        .description),
+                              ),
                         itemBuilder: (BuildContext context) {
                           return ApplicationState.getInstance.accounts.map((e) {
                             return PopupMenuItem<String>(
@@ -613,33 +631,32 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> with Single
                       child: Padding(
                         padding: EdgeInsets.only(left: 16.w, top: 10.h),
                         child: GridView.count(
+                          physics: NeverScrollableScrollPhysics(),
                           crossAxisCount: 4,
                           crossAxisSpacing: 4.0.h,
                           mainAxisSpacing: 4.0.w,
                           children: List.generate(
-                              ApplicationState.getInstance.incomeCategories
-                                  .length >
-                                  8
+                              ApplicationState
+                                          .getInstance.incomeCategories.length >
+                                      8
                                   ? 8
                                   : ApplicationState
-                                  .getInstance.incomeCategories.length,
-                                  (categoryIndex) => ToggleButtons(
-                                children: [
-                                  CategoryVWidget(
-                                      category: ApplicationState.getInstance
-                                          .incomeCategories[categoryIndex])
-                                ],
-                                fillColor: Color(int.parse(ApplicationState
-                                    .getInstance
-                                    .incomeCategories[categoryIndex]
-                                    .color)),
-                                renderBorder: false,
-                                isSelected: [
-                                  selectedIncome[categoryIndex]
-                                ],
-                                onPressed: (_) =>
-                                    onControlPress(categoryIndex, false),
-                              )),
+                                      .getInstance.incomeCategories.length,
+                              (categoryIndex) => ToggleButtons(
+                                    children: [
+                                      CategoryVWidget(
+                                          category: ApplicationState.getInstance
+                                              .incomeCategories[categoryIndex])
+                                    ],
+                                    fillColor: Color(int.parse(ApplicationState
+                                        .getInstance
+                                        .incomeCategories[categoryIndex]
+                                        .color)),
+                                    renderBorder: false,
+                                    isSelected: [selectedIncome[categoryIndex]],
+                                    onPressed: (_) =>
+                                        onControlPress(categoryIndex, false),
+                                  )),
                         ),
                       ),
                     ),
@@ -649,92 +666,106 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> with Single
                         children: [
                           Expanded(
                               child: ToggleButtons(
-                                children: <Widget>[
-                                  Column(
-                                    children: [
-                                      Text(
-                                          '${DateTime.now().day}/${DateTime.now().month}'),
-                                      Text('Hôm nay'),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text(
-                                          '${DateTime.now().subtract(const Duration(days: 1)).day}/${DateTime.now().subtract(const Duration(days: 1)).month}'),
-                                      Text('Hôm qua'),
-                                    ],
-                                  ),
-                                  (selectedDate != null &&
-                                      selectedDate!.isBefore(DateTime(
-                                          DateTime.now().year,
-                                          DateTime.now().month,
-                                          DateTime.now().day)
-                                          .subtract(Duration(days: 1)))
-                                      ? Column(
-                                    children: [
-                                      Text(
-                                          '${selectedDate!.day}/${selectedDate!.month}'),
-                                      Text('Đã chọn'),
-                                    ],
-                                  )
-                                      : Column(
-                                    children: [
-                                      Text(
-                                          '${DateTime.now().subtract(const Duration(days: 2)).day}/${DateTime.now().subtract(const Duration(days: 2)).month}'),
-                                      Text('Hai ngày trước'),
-                                    ],
-                                  ))
-                                ],
-                                onPressed: (int index) {
-                                  setState(() {
-                                    isSelectedDate = [false, false, false];
-                                    isSelectedDate[index] = true;
-                                    selectedDate = DateTime(
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                        '${DateTime.now().day}/${DateTime.now().month}'),
+                                    Text('Hôm nay'),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                        '${DateTime.now().subtract(const Duration(days: 1)).day}/${DateTime.now().subtract(const Duration(days: 1)).month}'),
+                                    Text('Hôm qua'),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: (selectedDate != null &&
+                                        selectedDate!.isBefore(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now().day)
+                                            .subtract(Duration(days: 1)))
+                                    ? Column(
+                                        children: [
+                                          Text(
+                                              '${selectedDate!.day}/${selectedDate!.month}'),
+                                          Text('Đã chọn'),
+                                        ],
+                                      )
+                                    : Column(
+                                        children: [
+                                          Text(
+                                              '${DateTime.now().subtract(const Duration(days: 2)).day}/${DateTime.now().subtract(const Duration(days: 2)).month}'),
+                                          Text('Hai ngày trước'),
+                                        ],
+                                      )),
+                              )
+                            ],
+                            onPressed: (int index) {
+                              setState(() {
+                                isSelectedDate = [false, false, false];
+                                isSelectedDate[index] = true;
+                                selectedDate = DateTime(
                                         DateTime.now().year,
                                         DateTime.now().month,
                                         DateTime.now().day)
-                                        .subtract(Duration(days: index));
-                                  });
-                                },
-                                isSelected: isSelectedDate,
-                              )),
-                          IconButton(
-                              onPressed: () async {
-                                DateTime? pickDate = await showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate:
-                                    DateTime(DateTime.now().year - 1),
-                                    lastDate: DateTime(
+                                    .subtract(Duration(days: index));
+                              });
+                            },
+                            isSelected: isSelectedDate,
+                          )),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            child: IconButton(
+                                onPressed: () async {
+                                  DateTime? pickDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate:
+                                          DateTime(DateTime.now().year - 1),
+                                      lastDate: DateTime(
+                                          DateTime.now().year,
+                                          DateTime.now().month,
+                                          DateTime.now().day),
+                                      builder: (context, child) => Theme(
+                                            data: ThemeData.light().copyWith(
+                                              colorScheme: ColorScheme.light(
+                                                  primary: Color.fromARGB(
+                                                      255, 35, 111, 87)),
+                                            ),
+                                            child: child as Widget,
+                                          ));
+                                  setState(() {
+                                    selectedDate = pickDate;
+                                    DateTime now = DateTime(
                                         DateTime.now().year,
                                         DateTime.now().month,
-                                        DateTime.now().day),
-                                    builder: (context, child) => Theme(
-                                      data: ThemeData.light().copyWith(
-                                        colorScheme: ColorScheme.light(
-                                            primary: Color.fromARGB(
-                                                255, 35, 111, 87)),
-                                      ),
-                                      child: child as Widget,
-                                    ));
-                                setState(() {
-                                  selectedDate = pickDate;
-                                  DateTime now = DateTime(DateTime.now().year,
-                                      DateTime.now().month, DateTime.now().day);
-                                  if (selectedDate != null) {
-                                    if (selectedDate!.isAtSameMomentAs(now)) {
-                                      isSelectedDate = [true, false, false];
-                                    } else if (selectedDate!.isAtSameMomentAs(
-                                        now.subtract(Duration(days: 1)))) {
-                                      isSelectedDate = [false, true, false];
-                                    } else {
-                                      isSelectedDate = [false, false, true];
+                                        DateTime.now().day);
+                                    if (selectedDate != null) {
+                                      if (selectedDate!.isAtSameMomentAs(now)) {
+                                        isSelectedDate = [true, false, false];
+                                      } else if (selectedDate!.isAtSameMomentAs(
+                                          now.subtract(Duration(days: 1)))) {
+                                        isSelectedDate = [false, true, false];
+                                      } else {
+                                        isSelectedDate = [false, false, true];
+                                      }
                                     }
-                                  }
-                                  selectedDate = selectedDate;
-                                });
-                              },
-                              icon: Icon(Icons.calendar_today))
+                                    selectedDate = selectedDate;
+                                  });
+                                },
+                                icon: Icon(Icons.calendar_today)),
+                          ),
                         ],
                       ),
                     ),
@@ -751,7 +782,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> with Single
                     ),
                     Padding(
                         padding:
-                        EdgeInsets.only(left: 16.w, right: 16.w, top: 5.h),
+                            EdgeInsets.only(left: 16.w, right: 16.w, top: 5.h),
                         child: TextField(
                           controller: _descriptionController,
                           maxLength: 500,
