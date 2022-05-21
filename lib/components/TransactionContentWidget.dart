@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_manager/components/ContentWithoutNoteWidget.dart';
 import 'package:money_manager/components/Transaction.dart';
+import 'package:money_manager/screens/AccountDetailScreen.dart';
 
 import 'Category.dart';
 
@@ -16,7 +17,10 @@ class TransactionContentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () =>
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => AccountDetailScreen(transactionDetails: transaction,))),
       child: Container(
         width: 343.0.w,
         height: 62.0.h,

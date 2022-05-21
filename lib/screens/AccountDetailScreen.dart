@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:money_manager/components/CategoryHWidget.dart';
+import 'package:money_manager/components/Transaction.dart';
+import 'package:money_manager/main.dart';
 import 'package:money_manager/screens/AddAccount.dart';
 import 'package:money_manager/src/widgets.dart';
 import '../components/ButtonPrimary.dart';
@@ -9,9 +13,10 @@ import '../components/NavigationDrawerWidget.dart';
 import '../components/TitleText1.dart';
 
 class AccountDetailScreen extends StatelessWidget {
-  AccountDetailScreen({Key? key, required this.title}) : super(key: key);
-  final String title;
-  static String money = '800.000', date = '10 tháng 3, 2022', reminder = 'Nạp game lửa chùa';
+  const AccountDetailScreen({Key? key, required this.transactionDetails})
+      : super(key: key);
+
+  final TransactionDetails transactionDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +35,6 @@ class AccountDetailScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         toolbarHeight: 72.h,
         elevation: 0.0,
-        leading: IconButton(
-          padding: EdgeInsets.only(left: 32.w),
-          iconSize: 30.sp,
-          icon: Icon(Icons.arrow_back_sharp),
-          tooltip: 'Menu',
-          onPressed: () => {Scaffold.of(context).openDrawer()},
-        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -70,7 +68,7 @@ class AccountDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 5.h),
             child: TitleText1(
-                text: money + ' ₫',
+                text: transactionDetails.value.toString() + ' ₫',
                 fontFamily: 'Inter',
                 fontSize: 19,
                 fontWeight: FontWeight.normal,
@@ -91,14 +89,20 @@ class AccountDetailScreen extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 5.h),
-            child: TitleText1(
-                text: 'Chính',
-                fontFamily: 'Inter',
-                fontSize: 19,
-                fontWeight: FontWeight.normal,
-                r: 0,
-                g: 0,
-                b: 0),
+            child: CategoryHWidget(
+                category: Category(
+                    id: ApplicationState.getInstance
+                        .getAccount(transactionDetails.accountID)!
+                        .id,
+                    icon: ApplicationState.getInstance
+                        .getAccount(transactionDetails.accountID)!
+                        .icon,
+                    color: ApplicationState.getInstance
+                        .getAccount(transactionDetails.accountID)!
+                        .color,
+                    description: ApplicationState.getInstance
+                        .getAccount(transactionDetails.accountID)!
+                        .description)),
           ),
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 20.h),
@@ -113,14 +117,9 @@ class AccountDetailScreen extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 5.h),
-            child: TitleText1(
-                text: 'Giải trí',
-                fontFamily: 'Inter',
-                fontSize: 19,
-                fontWeight: FontWeight.normal,
-                r: 0,
-                g: 0,
-                b: 0),
+            child: CategoryHWidget(
+                category: ApplicationState.getInstance
+                    .getCategory(transactionDetails.categoryID)!),
           ),
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 20.h),
@@ -136,7 +135,8 @@ class AccountDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 5.h),
             child: TitleText1(
-                text: date,
+                text:
+                    '${transactionDetails.date.toDate().day} tháng ${transactionDetails.date.toDate().month}, ${transactionDetails.date.toDate().year}',
                 fontFamily: 'Inter',
                 fontSize: 19,
                 fontWeight: FontWeight.normal,
@@ -145,7 +145,7 @@ class AccountDetailScreen extends StatelessWidget {
                 b: 0),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 16.w, top: 20.h),
+            padding: EdgeInsets.only(left: 16.w, top: 5.h),
             child: TitleText1(
                 text: 'Ghi chú',
                 fontFamily: 'Inter',
@@ -158,7 +158,7 @@ class AccountDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 5.h),
             child: TitleText1(
-                text: reminder,
+                text: transactionDetails.description!,
                 fontFamily: 'Inter',
                 fontSize: 19,
                 fontWeight: FontWeight.normal,
@@ -166,39 +166,44 @@ class AccountDetailScreen extends StatelessWidget {
                 g: 0,
                 b: 0),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    left: 16.w, right: 16.w, top: 140.h),
-                child: ButtonPrimary(
-                    text: 'Xóa',
-                    r: 255,
-                    g: 2,
-                    b: 2,
-                    radius: 20,
-                    weight: 94,
-                    height: 51,
-                    screenName: 'ContactScreen',
-                    ),
+          Padding(
+            padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
+            child: TextButton(
+              child: Text(
+                'XOÁ',
+                style: TextStyle(color: Colors.red, fontSize: 18),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: 16.w, right: 16.w, top: 140.h),
-                child: ButtonPrimary(
-                    text: 'Chỉnh sửa',
-                    r: 35,
-                    g: 111,
-                    b: 87,
-                    radius: 20,
-                    weight: 143,
-                    height: 51,
-                    screenName: 'ContactScreen',
-                    ),
-              ),
-            ],
+              onPressed: () {
+                FirebaseFirestore.instance
+                    .collection(
+                        'userData/${ApplicationState.getInstance.user!.uid}/transactions')
+                    .doc(transactionDetails.id)
+                    .delete()
+                    .then((_) => print('Deleted'))
+                    .catchError((error) => print('Delete failed: $error'));
+                Navigator.pop(context);
+              },
+            ),
           ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: [
+          //
+          //     Padding(
+          //       padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
+          //       child: ButtonPrimary(
+          //         text: 'Chỉnh sửa',
+          //         r: 35,
+          //         g: 111,
+          //         b: 87,
+          //         radius: 20,
+          //         weight: 143,
+          //         height: 51,
+          //         screenName: 'ContactScreen',
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

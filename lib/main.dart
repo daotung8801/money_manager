@@ -381,6 +381,7 @@ class ApplicationState extends ChangeNotifier {
           .listen((snapshot) {
         for (final document in snapshot.docs) {
           _transactions.add(TransactionDetails(
+              id: document.id,
               categoryID: document.data()['categoryID'],
               accountID: document.data()['accountID'],
               isExpense: isExpense,

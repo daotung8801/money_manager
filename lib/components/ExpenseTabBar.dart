@@ -267,6 +267,7 @@ class _TransactionsState extends State<TransactionsWidget> {
                                 ),
                                 TransactionContentWidget(
                                     transaction: TransactionDetails(
+                                      id: document.id,
                                       categoryID: document['categoryID'],
                                       accountID: document['accountID'],
                                       isExpense: true,
@@ -285,6 +286,7 @@ class _TransactionsState extends State<TransactionsWidget> {
                               children: [
                                 TransactionContentWidget(
                                     transaction: TransactionDetails(
+                                      id: document.id,
                                       categoryID: document['categoryID'],
                                       accountID: document['accountID'],
                                       isExpense: true,
