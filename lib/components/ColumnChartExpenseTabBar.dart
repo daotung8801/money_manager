@@ -146,7 +146,7 @@ class ColumnChartExpenseTabBar extends StatelessWidget {
                   child: charts.BarChart(
                     yearSeries,
                     animate: true,
-                    defaultRenderer: new charts.BarRendererConfig(
+                    defaultRenderer: charts.BarRendererConfig(
                       cornerStrategy: const charts.ConstCornerStrategy(5),
                     ),
                   ),
@@ -156,7 +156,7 @@ class ColumnChartExpenseTabBar extends StatelessWidget {
                   child: charts.BarChart(
                     monthSeries,
                     animate: true,
-                    defaultRenderer: new charts.BarRendererConfig(
+                    defaultRenderer: charts.BarRendererConfig(
                       cornerStrategy: const charts.ConstCornerStrategy(5),
                     ),
                   ),
