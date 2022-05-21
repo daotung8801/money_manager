@@ -303,7 +303,7 @@
     },
     {
       "name": "google_fonts",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/google_fonts-2.3.2",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/google_fonts-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -315,13 +315,13 @@
     },
     {
       "name": "google_sign_in_android",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_android-5.2.7",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_android-5.2.8",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "google_sign_in_ios",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_ios-5.2.7",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_ios-5.3.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -668,7 +668,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-05-20T02:28:54.968606Z",
+  "generated": "2022-05-21T02:54:19.040718Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

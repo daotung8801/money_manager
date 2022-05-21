@@ -228,7 +228,9 @@ class AccountInfo extends StatelessWidget {
             ),
             Container(
               child: Text(
-                '${account.value} ₫',
+                account.value < 1000000
+                    ? '${account.value} ₫'
+                    : '${(account.value ~/ 100000) / 10} Tr ₫',
                 textAlign: TextAlign.end,
               ),
               width: 80.0.w,

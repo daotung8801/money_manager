@@ -41,13 +41,16 @@ class TransactionContentWidget extends StatelessWidget {
               ),
               Positioned(
                 left: 10.0.w,
-                top: 52.0.h,
+                top: 42.0.h,
                 right: null,
                 bottom: null,
                 width: 233.0.w,
                 height: 51.0.h,
                 child: Visibility(
-                  visible: (this.transaction.description != null ? true : false),
+                  visible: this.transaction.description != null ||
+                          this.transaction.description!.isEmpty
+                      ? true
+                      : false,
                   child: ClipRRect(
                     borderRadius: BorderRadius.zero,
                     child: Container(

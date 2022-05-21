@@ -60,9 +60,9 @@ class ContentWithoutNoteWidget extends StatelessWidget {
                   width: 78.0,
                   height: 20.0,
                   child: Text(
-                    ((this.amount < 1000000
-                        ? '${this.amount} ₫'
-                        : '${(this.amount ~/ 100000) / 10} Tr ₫')),
+                    amount < 1000000
+                        ? '$amount ₫'
+                        : '${(amount ~/ 100000) / 10} Tr ₫',
                     overflow: TextOverflow.visible,
                     textAlign: TextAlign.right,
                     style: TextStyle(
@@ -81,7 +81,7 @@ class ContentWithoutNoteWidget extends StatelessWidget {
                   top: 25.0,
                   right: -4.0,
                   bottom: null,
-                  width: 44.0,
+                  width: 70.0,
                   height: 22.0,
                   child: Text(
                     accountName,
