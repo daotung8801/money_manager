@@ -65,7 +65,11 @@ class AccountWidget extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           backgroundColor: Color.fromARGB(255, 35, 111, 87),
-          onPressed: () {}),
+          onPressed: () {
+            Navigator.of(context).push(CustomPageRoute(
+                direction: AxisDirection.up,
+                child: AddAccountScreen(title: '',)));
+          }),
       body: Column(
         children: <Widget>[
           Center(
