@@ -238,29 +238,8 @@ class _EmailFormState extends State<EmailForm> {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 24),
                     child: TextFormField(
                       controller: _controller,
-                      decoration: InputDecoration(
-                        hintText: 'Nhập email của bạn',
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Color.fromARGB(255, 189, 189, 189),
-                        ),
-                        border: OutlineInputBorder(),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 189, 189, 189), width: 1.0),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 35, 111, 87), width: 2.0),
-                        ),
-                      ),
+                      decoration: CommonStyle.textFieldStyle(
+                          labelText: 'Email', hintText: 'Nhập email của bạn'),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Nhập địa chỉ email của bạn để tiếp tục';
@@ -425,29 +404,8 @@ class _RegisterFormState extends State<RegisterForm> {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 24),
                     child: TextFormField(
                       controller: _emailController,
-                      decoration: InputDecoration(
-                        hintText: 'Nhập email của bạn',
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Color.fromARGB(255, 189, 189, 189),
-                        ),
-                        border: OutlineInputBorder(),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 189, 189, 189), width: 1.0),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 35, 111, 87), width: 2.0),
-                        ),
-                      ),
+                      decoration: CommonStyle.textFieldStyle(
+                          labelText: 'Email', hintText: 'Nhập email của bạn'),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Nhập địa chỉ email của bạn để tiếp tục';
@@ -461,29 +419,8 @@ class _RegisterFormState extends State<RegisterForm> {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 24),
                     child: TextFormField(
                       controller: _displayNameController,
-                      decoration: InputDecoration(
-                        hintText: 'Nhập họ và tên',
-                        labelText: 'Họ và tên',
-                        labelStyle: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Color.fromARGB(255, 189, 189, 189),
-                        ),
-                        border: OutlineInputBorder(),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 189, 189, 189), width: 1.0),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 35, 111, 87), width: 2.0),
-                        ),
-                      ),
+                      decoration: CommonStyle.textFieldStyle(
+                          labelText: 'Họ và tên', hintText: 'Nhập họ và tên'),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return null;
@@ -666,29 +603,8 @@ class _PasswordFormState extends State<PasswordForm> {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 24),
                     child: TextFormField(
                       controller: _emailController,
-                      decoration: InputDecoration(
-                        hintText: 'Nhập email của bạn',
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Color.fromARGB(255, 189, 189, 189),
-                        ),
-                        border: OutlineInputBorder(),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 189, 189, 189), width: 1.0),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 35, 111, 87), width: 2.0),
-                        ),
-                      ),
+                      decoration: CommonStyle.textFieldStyle(
+                          labelText: 'Email', hintText: 'Nhập email của bạn'),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Nhập địa chỉ email của bạn để tiếp tục';

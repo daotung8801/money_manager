@@ -228,7 +228,7 @@ class AccountInfo extends StatelessWidget {
             ),
             Container(
               child: Text(
-                '${account.value} đ',
+                '${account.value} ₫',
                 textAlign: TextAlign.end,
               ),
               width: 80.0.w,

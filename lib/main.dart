@@ -184,7 +184,7 @@ class ApplicationState extends ChangeNotifier {
                   'icon': "💳",
                   'index': 1,
                   'value': 0,
-                  'currencyunit': "đ",
+                  'currencyunit': "₫",
                   'visible': true
                 })
                 .then((_) => print('Added tk chinh to ${user.uid}'))

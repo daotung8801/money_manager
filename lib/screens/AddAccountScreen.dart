@@ -74,7 +74,7 @@ class AddAccountScreen extends StatelessWidget {
                 Padding(
                     padding: EdgeInsets.only(top: 20.h),
                     child: TitleText1(
-                        text: 'đ',
+                        text: '₫',
                         fontFamily: 'Inter',
                         fontSize: 25,
                         fontWeight: FontWeight.normal,
@@ -135,7 +135,7 @@ class AddAccountScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 16.w, top: 5.h),
               child: TitleText1(
-                  text: 'đ',
+                  text: '₫',
                   fontFamily: 'Inter',
                   fontSize: 20,
                   fontWeight: FontWeight.normal,

@@ -70,7 +70,7 @@ class AccountDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 5.h),
             child: TitleText1(
-                text: money + ' đ',
+                text: money + ' ₫',
                 fontFamily: 'Inter',
                 fontSize: 19,
                 fontWeight: FontWeight.normal,

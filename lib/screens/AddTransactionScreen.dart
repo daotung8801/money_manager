@@ -195,7 +195,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                         .add({
                           'accountID': _selectedAccount,
                           'categoryID': category!.id,
-                          'currencyunit': "VNĐ",
+                          'currencyunit': "₫",
                           'date': Timestamp.fromDate(selectedDate!),
                           'description': _descriptionController.text,
                           'isExpense': isExpense,
@@ -204,7 +204,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                         .then((_) => print('Success'))
                         .catchError((error) => print('Add failed: $error'));
                   }
-                }
+                };
+                Navigator.of(context).pop();
               }
             }),
         body: TabBarView(
@@ -241,7 +242,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                           ),
                         ),
                         TitleText1(
-                            text: 'VNĐ',
+                            text: '₫',
                             fontFamily: 'Inter',
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -555,7 +556,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                           ),
                         ),
                         TitleText1(
-                            text: 'VNĐ',
+                            text: '₫',
                             fontFamily: 'Inter',
                             fontSize: 25,
                             fontWeight: FontWeight.bold,

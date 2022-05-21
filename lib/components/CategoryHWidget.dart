@@ -8,7 +8,7 @@ class CategoryHWidget extends StatelessWidget {
   final Category category;
   final bool hasImage;
 
-  const CategoryHWidget({Key? key, required this.category, this.hasImage = false}) : super(key: key);
+  CategoryHWidget({Key? key, required this.category, this.hasImage = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
