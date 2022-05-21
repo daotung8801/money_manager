@@ -8,7 +8,7 @@ import 'package:money_manager/components/CategoryHWidget.dart';
 import 'package:money_manager/components/InputTextDown.dart';
 import 'package:money_manager/components/InputTextField.dart';
 import 'package:money_manager/main.dart';
-import '../components/Account.dart';
+import '../components/account.dart';
 import '../components/ButtonPrimary.dart';
 import '../components/CategoryVWidget.dart';
 import '../components/DatePicker1.dart';

@@ -8,9 +8,9 @@ class CategoryIconWidget extends StatelessWidget {
   String bgColor;
   double buttonSize;
   double borderRadius;
-  static const double BIG = 48.0;
-  static const double MEDIUM = 30.0;
-  static const double SMALL = 15.0;
+  static const double BIG = 48;
+  static const double MEDIUM = 30;
+  static const double SMALL = 15;
 
   CategoryIconWidget(
       {Key? key,
@@ -24,20 +24,17 @@ class CategoryIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: this.buttonSize.w,
-      height: this.buttonSize.h,
+      width: buttonSize.w,
+      height: buttonSize.h,
       child: Stack(
-          fit: StackFit.expand,
+          clipBehavior: Clip.none, fit: StackFit.expand,
           alignment: Alignment.center,
-          overflow: Overflow.visible,
           children: [
             Positioned(
-              left: 0.0,
-              top: 0.0,
-              right: 0.0,
-              bottom: 0.0,
-              width: null,
-              height: null,
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
               child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 final double width = constraints.maxWidth;
@@ -53,19 +50,19 @@ class CategoryIconWidget extends StatelessWidget {
                         width: width.w,
                         height: height.h,
                         child: Opacity(
-                          opacity: 1.0,
+                          opacity: 1,
                           child: Container(
-                            width: this.buttonSize.w,
-                            height: this.buttonSize.h,
+                            width: buttonSize.w,
+                            height: buttonSize.h,
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.circular(this.borderRadius.r),
+                                  BorderRadius.circular(borderRadius.r),
                             ),
                             child: ClipRRect(
                               borderRadius:
-                                  BorderRadius.circular(this.borderRadius.r),
+                                  BorderRadius.circular(borderRadius.r),
                               child: Container(
-                                color: Color(int.parse(this.bgColor)),
+                                color: Color(int.parse(bgColor)),
                               ),
                             ),
                           ),
@@ -75,12 +72,10 @@ class CategoryIconWidget extends StatelessWidget {
               }),
             ),
             Positioned(
-              left: 0.0,
-              top: 0.0,
-              right: 0.0,
-              bottom: 0.0,
-              width: null,
-              height: null,
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
               child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 final double width = constraints.maxWidth * 1.1041666666666667;
@@ -97,17 +92,16 @@ class CategoryIconWidget extends StatelessWidget {
                         width: width.w,
                         height: height.h,
                         child: Align(
-                          alignment: Alignment.center,
                           child: Text(
-                            this.icon,
+                            icon,
                             overflow: TextOverflow.visible,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               height: 1.1666666666666667.h,
-                              fontSize: this.buttonSize/2.sp,
+                              fontSize: buttonSize/2.sp,
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w400,
-                              color: Color(int.parse(this.iconColor)),
+                              color: Color(int.parse(iconColor)),
 
                               /* letterSpacing: 0.0, */
                             ),

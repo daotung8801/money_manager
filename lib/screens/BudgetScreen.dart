@@ -35,8 +35,7 @@ class BudgetScreen extends StatelessWidget {
                                     Builder(
                                       builder: (context) => Container(
                                         child: IconButton(
-                                          padding: EdgeInsets.only(
-                                              left: 10.w, bottom: 10.h),
+                                          padding: EdgeInsets.all(5),
                                           iconSize: 30.sp,
                                           icon: Icon(Icons.menu),
                                           tooltip: 'Menu',
@@ -58,24 +57,28 @@ class BudgetScreen extends StatelessWidget {
                                           g: 255,
                                           b: 255),
                                     ),
-                                    IconButton(
-                                      padding: EdgeInsets.only(
-                                          left: 60.w, bottom: 10.h),
-                                      iconSize: 35.sp,
-                                      icon: Image.asset("assets/ngansach.png"),
-                                      onPressed: () {
-                                        Navigator.of(context)
-                                            .push(CustomPageRoute(
-                                                direction: AxisDirection.left,
-                                                child: ExchangeMoney(
-                                                  typeIndex:
-                                                      DefaultTabController.of(
-                                                              context)!
-                                                          .index,
-                                                  timeIndex: ApplicationState
-                                                      .getInstance.timeTab,
-                                                )));
-                                      },
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 45.h),
+                                      child: IconButton(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 10.h, horizontal: 5.h),
+                                        iconSize: 35.sp,
+                                        icon:
+                                            Image.asset("assets/ngansach.png"),
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .push(CustomPageRoute(
+                                                  direction: AxisDirection.left,
+                                                  child: ExchangeMoney(
+                                                    typeIndex:
+                                                        DefaultTabController.of(
+                                                                context)!
+                                                            .index,
+                                                    timeIndex: ApplicationState
+                                                        .getInstance.timeTab,
+                                                  )));
+                                        },
+                                      ),
                                     ),
                                   ]),
                               Padding(

@@ -1,20 +1,14 @@
 import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_manager/components/CategoryHWidget.dart';
 import 'package:money_manager/components/ExpenseTabBar.dart';
-import 'package:money_manager/components/Transaction.dart';
+import 'package:money_manager/screens/ExchangeMoney.dart';
 import 'package:provider/provider.dart';
-import '../components/PlusButton.dart';
 import '../main.dart';
-import 'ButtonPrimary.dart';
-import 'DatePicker1.dart';
-import 'DateRangePicker.dart';
 import 'TitleText1.dart';
-import 'TransactionContentWidget.dart';
 
 class BudgetTaskBar extends StatelessWidget {
   const BudgetTaskBar({Key? key, required this.isExpense}) : super(key: key);
@@ -30,33 +24,31 @@ class BudgetTaskBar extends StatelessWidget {
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              child: TabBar(
-                labelColor: Color.fromARGB(255, 35, 111, 87),
-                labelStyle: TextStyle(
-                    fontSize: 15.sp,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.bold),
-                unselectedLabelColor: Colors.black,
-                indicatorWeight: 2.2.sp,
-                indicatorColor: Color.fromARGB(255, 35, 111, 87),
-                padding: EdgeInsets.only(top: 10.h, left: 0.w, right: 10.w),
-                indicatorPadding:
-                    EdgeInsets.only(left: 25.0.w, bottom: 5.0.h, right: 1.w),
-                labelPadding: EdgeInsets.only(left: 23.0.w),
-                isScrollable: true,
-                tabs: [
-                  Tab(text: 'Ngày'),
-                  Tab(text: 'Tuần'),
-                  Tab(text: 'Tháng'),
-                  Tab(text: 'Năm'),
-                  Tab(text: 'Khoảng thời gian'),
-                ],
-              ),
+            TabBar(
+              labelColor: const Color.fromARGB(255, 35, 111, 87),
+              labelStyle: TextStyle(
+                  fontSize: 15.sp,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.bold),
+              unselectedLabelColor: Colors.black,
+              indicatorWeight: 2.2.sp,
+              indicatorColor: const Color.fromARGB(255, 35, 111, 87),
+              padding: EdgeInsets.only(top: 10.h, left: 0.w, right: 10.w),
+              indicatorPadding:
+                  EdgeInsets.only(left: 25.0.w, bottom: 5.0.h, right: 1.w),
+              labelPadding: EdgeInsets.only(left: 23.0.w),
+              isScrollable: true,
+              tabs: const [
+                Tab(text: 'Ngày'),
+                Tab(text: 'Tuần'),
+                Tab(text: 'Tháng'),
+                Tab(text: 'Năm'),
+                Tab(text: 'Khoảng thời gian'),
+              ],
             ),
             Container(
               height: 400.h, //height of TabBarView
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: TabBarView(
                 children: <Widget>[
                   TransactionsByCategoryWidget(
@@ -134,28 +126,28 @@ class TransactionsByCategoryWidget extends StatefulWidget {
   final TAB tab;
 
   TransactionsByCategoryWidget(
-      {this.dateTimeRange, required this.tab, required this.isExpense});
+      {Key? key,
+      this.dateTimeRange,
+      required this.tab,
+      required this.isExpense})
+      : super(key: key);
 
   @override
   _TransactionsByCategoryState createState() {
     ApplicationState.getInstance.timeTab = tab.index;
-    if (dateTimeRange == null) {
-      dateTimeRange = DateTimeRange(
-          start: DateTime(DateTime.now().year, DateTime.now().month, 1),
-          end: DateTime(
-              DateTime.now().year, DateTime.now().month, DateTime.now().day));
-    }
+    dateTimeRange ??= DateTimeRange(
+        start: DateTime(DateTime.now().year, DateTime.now().month),
+        end: DateTime(
+            DateTime.now().year, DateTime.now().month, DateTime.now().day));
     return _TransactionsByCategoryState(
-        dateTimeRange: this.dateTimeRange!,
-        tab: this.tab,
-        isExpense: this.isExpense);
+        dateTimeRange: dateTimeRange!, tab: tab, isExpense: isExpense);
   }
 }
 
 class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
   final bool isExpense;
   DateTimeRange dateTimeRange;
-  final tab;
+  final TAB tab;
   int _amount = 0;
 
   _TransactionsByCategoryState(
@@ -167,20 +159,11 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    if (dateTimeRange == null) {
-      selectRange();
-    }
   }
 
   void _setDateTimeRange(DateTimeRange dateTimeRange) {
     setState(() {
       this.dateTimeRange = dateTimeRange;
-    });
-  }
-
-  void _setAmount(int amount) {
-    setState(() {
-      _amount = amount;
     });
   }
 
@@ -212,19 +195,21 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
-                    return Text('Something went wrong');
+                    return const Text('Something went wrong');
                   }
 
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("Loading");
+                    return const Text('Loading');
                   }
                   int amount = 0;
-                  for (DocumentSnapshot doc in snapshot.data!.docs) {
+                  for (final DocumentSnapshot doc in snapshot.data!.docs) {
                     amount += doc['value'] as int;
                   }
                   _amount = amount;
                   return TitleText1(
-                      text: (amount<1000000?'Tổng cộng: $_amount ₫':'Tổng cộng: ${(_amount ~/ 100000)/10} Tr ₫'),
+                      text: amount < 1000000
+                          ? 'Tổng cộng: $_amount ₫'
+                          : 'Tổng cộng: ${(_amount ~/ 100000) / 10} Tr ₫',
                       fontFamily: 'Inter',
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -250,35 +235,46 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
                     .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
-                  print(dateTimeRange);
                   if (snapshot.hasError) {
-                    return Text('Something went wrong');
+                    return const Text('Something went wrong');
                   }
 
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("Loading");
+                    return const Text('Loading');
                   }
                   int sum = 0;
-                  Map<String, int> categories = Map();
-                  for (DocumentSnapshot document in snapshot.data!.docs) {
+                  final Map<String, int> categories = {};
+                  for (final DocumentSnapshot document in snapshot.data!.docs) {
                     categories.update(document['categoryID'],
                         (value) => value + document['value'] as int,
                         ifAbsent: () => document['value'] as int);
                     sum += document['value'] as int;
                   }
-                  Map<String, int> sortedCategories = SplayTreeMap.from(
+                  final Map<String, int> sortedCategories = SplayTreeMap.from(
                       categories,
                       (key1, key2) =>
                           categories[key2]!.compareTo(categories[key1]!));
                   return ListView.builder(
                     itemCount: sortedCategories.length,
                     itemBuilder: (BuildContext context, int index) {
-                      String key = sortedCategories.keys.elementAt(index);
-                      return AmountForCategoryWidget(
-                          categoryID: key,
-                          amount: sortedCategories[key]!,
-                          percentage:
-                              (sortedCategories[key]! * 100.0 / sum).round());
+                      final String key = sortedCategories.keys.elementAt(index);
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ExchangeMoney(
+                                        typeIndex: isExpense ? 0 : 1,
+                                        timeIndex: tab.index,
+                                        categoryID: key,
+                                      )));
+                        },
+                        child: AmountForCategoryWidget(
+                            categoryID: key,
+                            amount: sortedCategories[key]!,
+                            percentage:
+                                (sortedCategories[key]! * 100.0 / sum).round()),
+                      );
                     },
                   );
                 },
@@ -291,11 +287,11 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
   }
 
   Widget dateTimeRangeWidget(TAB tab) {
-    DateTime start = DateTime(dateTimeRange.start.year,
+    final DateTime start = DateTime(dateTimeRange.start.year,
         dateTimeRange.start.month, dateTimeRange.start.day);
-    DateTime end = DateTime(
+    final DateTime end = DateTime(
         dateTimeRange.end.year, dateTimeRange.end.month, dateTimeRange.end.day);
-    DateTime now =
+    final DateTime now =
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
     switch (tab) {
       case TAB.DATE:
@@ -308,7 +304,7 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
                 DateTime.now().year, DateTime.now().month, DateTime.now().day),
             builder: (context, child) => Theme(
               data: ThemeData.light().copyWith(
-                colorScheme: ColorScheme.light(
+                colorScheme: const ColorScheme.light(
                     primary: Color.fromARGB(255, 35, 111, 87)),
               ),
               child: child as Widget,
@@ -317,32 +313,32 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
           if (newDate != null) {
             _setDateTimeRange(DateTimeRange(start: newDate, end: newDate));
           }
+          return null;
         }
         if (start.year == now.year) {
           if (start.isAtSameMomentAs(now)) {
             return TextButton(
                 onPressed: onPress,
                 child: Text('Hôm nay, ${start.day} tháng ${start.month}',
-                    style: TextStyle(color: Colors.black)));
+                    style: const TextStyle(color: Colors.black)));
           } else if (start
               .isAtSameMomentAs(now.subtract(const Duration(days: 1)))) {
             return TextButton(
                 onPressed: onPress,
                 child: Text('Hôm qua, ${start.day} tháng ${start.month}',
-                    style: TextStyle(color: Colors.black)));
+                    style: const TextStyle(color: Colors.black)));
           } else {
             return TextButton(
                 onPressed: onPress,
                 child: Text('${start.day} tháng ${start.month}',
-                    style: TextStyle(color: Colors.black)));
+                    style: const TextStyle(color: Colors.black)));
           }
         } else {
           return TextButton(
               onPressed: onPress,
               child: Text('${start.day} tháng ${start.month}, ${start.year}',
-                  style: TextStyle(color: Colors.black)));
+                  style: const TextStyle(color: Colors.black)));
         }
-        break;
       // case TAB.WEEK:
       //   Future<Function?> onPress() async {
       //     final newDate = await showDateRangePicker(
@@ -378,16 +374,16 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
               onPressed: selectRange,
               child: Text(
                   'Từ ${start.day}/${start.month} đến ${end.day}/${end.month}/${end.year}',
-                  style: TextStyle(color: Colors.black)));
+                  style: const TextStyle(color: Colors.black)));
         } else {
           return TextButton(
               onPressed: selectRange,
               child: Text(
                   'Từ ${start.day}/${start.month}/${start.year} đến ${end.day}/${end.month}/${end.year}',
-                  style: TextStyle(color: Colors.black)));
+                  style: const TextStyle(color: Colors.black)));
         }
       default:
-        return Text('ADU');
+        return const Text('ADU');
     }
   }
 
@@ -398,13 +394,13 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
       lastDate: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day),
       initialDateRange: DateTimeRange(
-          start: DateTime(DateTime.now().year, DateTime.now().month, 1),
+          start: DateTime(DateTime.now().year, DateTime.now().month),
           end: DateTime(
               DateTime.now().year, DateTime.now().month, DateTime.now().day)),
       builder: (context, child) => Theme(
         data: ThemeData.light().copyWith(
-          colorScheme:
-              ColorScheme.light(primary: Color.fromARGB(255, 35, 111, 87)),
+          colorScheme: const ColorScheme.light(
+              primary: Color.fromARGB(255, 35, 111, 87)),
         ),
         child: child as Widget,
       ),
@@ -413,6 +409,7 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
       _setDateTimeRange(
           DateTimeRange(start: newDateRange.start, end: newDateRange.end));
     }
+    return null;
   }
 }
 
@@ -439,26 +436,33 @@ class AmountForCategoryWidget extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(left: 23.w, top: 30.h),
-            child: (ApplicationState.getInstance.getCategory(categoryID) != null
+            child: ApplicationState.getInstance.getCategory(categoryID) != null
                 ? CategoryHWidget(
                     category:
                         ApplicationState.getInstance.getCategory(categoryID)!,
-                    hasImage: false,
                   )
-                : Text('Lỗi: Không tìm thấy danh mục')),
+                : const Text('Lỗi: Không tìm thấy danh mục'),
           ),
           Padding(
             padding: EdgeInsets.only(left: 1.w, top: 30.h),
             child: Container(
               width: 40,
-              child: Text('$percentage%', textAlign: TextAlign.right,),
+              child: Text(
+                '$percentage%',
+                textAlign: TextAlign.right,
+              ),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(left: 10.w, top: 30.h, right: 17.w),
             child: Container(
               width: 100,
-              child: Text((amount<1000000?'$amount ₫':'${(amount ~/ 100000)/10} Tr ₫'), textAlign: TextAlign.right,),
+              child: Text(
+                amount < 1000000
+                    ? '$amount ₫'
+                    : '${(amount ~/ 100000) / 10} Tr ₫',
+                textAlign: TextAlign.right,
+              ),
             ),
           ),
         ],

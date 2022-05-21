@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../helpers/transform/transform.dart';
 import 'Category.dart';
 import 'CategoryIconWidget.dart';
-import '../helpers/transform/transform.dart';
 
 class CategoryVWidget extends StatelessWidget {
   Category category;
@@ -24,17 +25,14 @@ class CategoryVWidget extends StatelessWidget {
       width: 70.0.w,
       height: 70.0.h,
       child: Stack(
-          fit: StackFit.expand,
+          clipBehavior: Clip.none, fit: StackFit.expand,
           alignment: Alignment.center,
-          overflow: Overflow.visible,
           children: [
             Positioned(
-              left: 0.0,
-              top: 0.0,
-              right: 0.0,
-              bottom: 0.0,
-              width: null,
-              height: null,
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
               child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 final double width = constraints.maxWidth * 0.6857142857142857;
@@ -51,23 +49,21 @@ class CategoryVWidget extends StatelessWidget {
                         width: width.w,
                         height: height.h,
                         child: CategoryIconWidget(
-                          icon: this.category.icon,
-                          bgColor: this.category.color,
-                          iconColor: this.iconColor,
-                          buttonSize: this.iconSize,
-                          borderRadius: this.iconBorderRadius,
+                          icon: category.icon,
+                          bgColor: category.color,
+                          iconColor: iconColor,
+                          buttonSize: iconSize,
+                          borderRadius: iconBorderRadius,
                         ),
                       ))
                 ]);
               }),
             ),
             Positioned(
-              left: 0.0,
-              top: 0.0,
-              right: 0.0,
-              bottom: 0.0,
-              width: null,
-              height: null,
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
               child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 final double width = constraints.maxWidth * 1.0285714285714285;
@@ -84,7 +80,7 @@ class CategoryVWidget extends StatelessWidget {
                         width: width.w,
                         height: height.h,
                         child: Text(
-                          this.category.description,
+                          category.description,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -92,7 +88,7 @@ class CategoryVWidget extends StatelessWidget {
                             fontSize: 13.0.sp,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w400,
-                            color: Color.fromARGB(255, 0, 16, 38),
+                            color: const Color.fromARGB(255, 0, 16, 38),
 
                             /* letterSpacing: 0.0, */
                           ),

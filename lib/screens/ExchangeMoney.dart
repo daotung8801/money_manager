@@ -9,10 +9,11 @@ import '../components/TitleText1.dart';
 import 'AddTransactionScreen.dart';
 
 class ExchangeMoney extends StatelessWidget {
-  ExchangeMoney({Key? key, required this.typeIndex, required this.timeIndex})
+  ExchangeMoney({Key? key, required this.typeIndex, required this.timeIndex, this.categoryID})
       : super(key: key);
   final int typeIndex;
   final int timeIndex;
+  String? categoryID;
 
   void _showDialog(BuildContext context) {
     showDialog(
@@ -135,12 +136,14 @@ class ExchangeMoney extends StatelessWidget {
                   child: ExpenseTabBar(
                     isExpense: true,
                     tab: TAB.values.elementAt(this.timeIndex),
+                    categoryID: categoryID,
                   ),
                 ),
                 Center(
                   child: ExpenseTabBar(
                     isExpense: false,
                     tab: TAB.values.elementAt(this.timeIndex),
+                    categoryID: categoryID,
                   ),
                 ),
               ],

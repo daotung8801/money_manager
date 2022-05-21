@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:money_manager/components/Account.dart';
+import 'package:money_manager/components/account.dart';
 import 'package:money_manager/components/Transaction.dart';
 import 'package:money_manager/screens/AccountDetailScreen.dart';
 import 'package:money_manager/screens/AddAccountScreen.dart';

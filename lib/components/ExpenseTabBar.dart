@@ -10,10 +10,12 @@ import 'package:provider/provider.dart';
 import 'TitleText1.dart';
 
 class ExpenseTabBar extends StatelessWidget {
-  const ExpenseTabBar({Key? key, required this.isExpense, required this.tab})
+  const ExpenseTabBar(
+      {Key? key, required this.isExpense, required this.tab, this.categoryID})
       : super(key: key);
   final TAB tab;
   final bool isExpense;
+  final String? categoryID;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,8 @@ class ExpenseTabBar extends StatelessWidget {
                       end: DateTime(DateTime.now().year, DateTime.now().month,
                           DateTime.now().day)),
                   tab: TAB.DATE,
-                  isExpense: this.isExpense,
+                  isExpense: isExpense,
+                  categoryID: categoryID,
                 ),
                 Center(
                     child: TitleText1(
@@ -91,6 +94,7 @@ class ExpenseTabBar extends StatelessWidget {
                 TransactionsWidget(
                   tab: TAB.RANGE,
                   isExpense: isExpense,
+                  categoryID: categoryID,
                 ),
                 // Center(
                 //   child: Column(
@@ -120,9 +124,13 @@ class TransactionsWidget extends StatefulWidget {
   final bool isExpense;
   DateTimeRange? dateTimeRange;
   final tab;
+  final String? categoryID;
 
   TransactionsWidget(
-      {this.dateTimeRange, required this.tab, required this.isExpense});
+      {this.dateTimeRange,
+      required this.tab,
+      required this.isExpense,
+      this.categoryID});
 
   @override
   _TransactionsState createState() {
@@ -135,7 +143,8 @@ class TransactionsWidget extends StatefulWidget {
     return _TransactionsState(
         dateTimeRange: this.dateTimeRange!,
         tab: this.tab,
-        isExpense: this.isExpense);
+        isExpense: this.isExpense,
+        categoryID: this.categoryID);
   }
 }
 
@@ -144,11 +153,13 @@ class _TransactionsState extends State<TransactionsWidget> {
   DateTimeRange dateTimeRange;
   final tab;
   int _amount = 0;
+  String? categoryID;
 
   _TransactionsState(
       {required this.dateTimeRange,
       required this.tab,
-      required this.isExpense});
+      required this.isExpense,
+      this.categoryID});
 
   @override
   void initState() {
@@ -182,19 +193,34 @@ class _TransactionsState extends State<TransactionsWidget> {
           children: <Widget>[
             dateTimeRangeWidget(tab),
             StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection('userData/${appState.user!.uid}/transactions')
-                  .where('isExpense', isEqualTo: isExpense)
-                  .where('date',
-                  isGreaterThanOrEqualTo: DateTime(
-                      dateTimeRange.start.year,
-                      dateTimeRange.start.month,
-                      dateTimeRange.start.day))
-                  .where('date',
-                  isLessThanOrEqualTo: DateTime(dateTimeRange.end.year,
-                      dateTimeRange.end.month, dateTimeRange.end.day))
-              // .orderBy('date', descending: true)
-                  .snapshots(),
+              stream: categoryID == null
+                  ? FirebaseFirestore.instance
+                      .collection('userData/${appState.user!.uid}/transactions')
+                      .where('isExpense', isEqualTo: isExpense)
+                      .where('date',
+                          isGreaterThanOrEqualTo: DateTime(
+                              dateTimeRange.start.year,
+                              dateTimeRange.start.month,
+                              dateTimeRange.start.day))
+                      .where('date',
+                          isLessThanOrEqualTo: DateTime(dateTimeRange.end.year,
+                              dateTimeRange.end.month, dateTimeRange.end.day))
+                      // .orderBy('date', descending: true)
+                      .snapshots()
+                  : FirebaseFirestore.instance
+                      .collection('userData/${appState.user!.uid}/transactions')
+                      .where('isExpense', isEqualTo: isExpense)
+                      .where('categoryID', isEqualTo: categoryID)
+                      .where('date',
+                          isGreaterThanOrEqualTo: DateTime(
+                              dateTimeRange.start.year,
+                              dateTimeRange.start.month,
+                              dateTimeRange.start.day))
+                      .where('date',
+                          isLessThanOrEqualTo: DateTime(dateTimeRange.end.year,
+                              dateTimeRange.end.month, dateTimeRange.end.day))
+                      // .orderBy('date', descending: true)
+                      .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
@@ -223,86 +249,100 @@ class _TransactionsState extends State<TransactionsWidget> {
             ),
             Expanded(
                 child: StreamBuilder<QuerySnapshot>(
-                  stream: FirebaseFirestore.instance
+              stream: categoryID == null
+                  ? FirebaseFirestore.instance
                       .collection('userData/${appState.user!.uid}/transactions')
                       .where('isExpense', isEqualTo: isExpense)
                       .where('date',
-                      isGreaterThanOrEqualTo: DateTime(
-                          dateTimeRange.start.year,
-                          dateTimeRange.start.month,
-                          dateTimeRange.start.day))
+                          isGreaterThanOrEqualTo: DateTime(
+                              dateTimeRange.start.year,
+                              dateTimeRange.start.month,
+                              dateTimeRange.start.day))
                       .where('date',
-                      isLessThanOrEqualTo: DateTime(dateTimeRange.end.year,
-                          dateTimeRange.end.month, dateTimeRange.end.day))
-                  // .orderBy('date', descending: true)
+                          isLessThanOrEqualTo: DateTime(dateTimeRange.end.year,
+                              dateTimeRange.end.month, dateTimeRange.end.day))
+                      // .orderBy('date', descending: true)
+                      .snapshots()
+                  : FirebaseFirestore.instance
+                      .collection('userData/${appState.user!.uid}/transactions')
+                      .where('isExpense', isEqualTo: isExpense)
+                      .where('categoryID', isEqualTo: categoryID)
+                      .where('date',
+                          isGreaterThanOrEqualTo: DateTime(
+                              dateTimeRange.start.year,
+                              dateTimeRange.start.month,
+                              dateTimeRange.start.day))
+                      .where('date',
+                          isLessThanOrEqualTo: DateTime(dateTimeRange.end.year,
+                              dateTimeRange.end.month, dateTimeRange.end.day))
+                      // .orderBy('date', descending: true)
                       .snapshots(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.hasError) {
-                      return Text('Something went wrong');
-                    }
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Something went wrong');
+                }
 
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Text("Loading");
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text("Loading");
+                }
+                DateTime date = dateTimeRange.end.add(const Duration(days: 1));
+                return ListView(
+                  children: snapshot.data!.docs.reversed
+                      .map((DocumentSnapshot document) {
+                    if (date.isAfter(document['date'].toDate())) {
+                      date = document['date'].toDate();
+                      return Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.0),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 26.0.w),
+                              child: Container(
+                                child: Text(
+                                    '${date.day} tháng ${date.month}, ${date.year}',
+                                    style: TextStyle(color: Colors.black)),
+                                alignment: Alignment.centerLeft,
+                              ),
+                            ),
+                            TransactionContentWidget(
+                                transaction: TransactionDetails(
+                              id: document.id,
+                              categoryID: document['categoryID'],
+                              accountID: document['accountID'],
+                              isExpense: true,
+                              currencyunit: document['currencyunit'],
+                              value: document['value'],
+                              date: document['date'],
+                              description: document['description'],
+                            ))
+                          ],
+                        ),
+                      );
+                    } else {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                        child: Column(
+                          children: [
+                            TransactionContentWidget(
+                                transaction: TransactionDetails(
+                              id: document.id,
+                              categoryID: document['categoryID'],
+                              accountID: document['accountID'],
+                              isExpense: true,
+                              currencyunit: document['currencyunit'],
+                              value: document['value'],
+                              date: document['date'],
+                              description: document['description'],
+                            ))
+                          ],
+                        ),
+                      );
                     }
-                    DateTime date =
-                    dateTimeRange.end.add(const Duration(days: 1));
-                    return ListView(
-                      children: snapshot.data!.docs.reversed
-                          .map((DocumentSnapshot document) {
-                        if (date.isAfter(document['date'].toDate())) {
-                          date = document['date'].toDate();
-                          return Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10.0),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 26.0.w),
-                                  child: Container(
-                                    child: Text(
-                                        '${date.day} tháng ${date.month}, ${date.year}',
-                                        style: TextStyle(color: Colors.black)),
-                                    alignment: Alignment.centerLeft,
-                                  ),
-                                ),
-                                TransactionContentWidget(
-                                    transaction: TransactionDetails(
-                                      id: document.id,
-                                      categoryID: document['categoryID'],
-                                      accountID: document['accountID'],
-                                      isExpense: true,
-                                      currencyunit: document['currencyunit'],
-                                      value: document['value'],
-                                      date: document['date'],
-                                      description: document['description'],
-                                    ))
-                              ],
-                            ),
-                          );
-                        } else {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(vertical: 5.0),
-                            child: Column(
-                              children: [
-                                TransactionContentWidget(
-                                    transaction: TransactionDetails(
-                                      id: document.id,
-                                      categoryID: document['categoryID'],
-                                      accountID: document['accountID'],
-                                      isExpense: true,
-                                      currencyunit: document['currencyunit'],
-                                      value: document['value'],
-                                      date: document['date'],
-                                      description: document['description'],
-                                    ))
-                              ],
-                            ),
-                          );
-                        }
-                      }).toList(),
-                    );
-                  },
-                ))
+                  }).toList(),
+                );
+              },
+            ))
           ],
         );
       }),
