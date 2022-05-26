@@ -491,7 +491,6 @@ class _TransactionsState extends State<TransactionsWidget> {
               );
             },
             child: Text('${start.year}'));
-
       case TAB.RANGE:
         if (start.year == end.year) {
           return TextButton(
