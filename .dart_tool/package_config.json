@@ -224,6 +224,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_date_pickers",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_date_pickers-0.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_facebook_auth",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth-4.3.4",
       "packageUri": "lib/",
@@ -418,6 +424,12 @@
     {
       "name": "mime",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "month_year_picker",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/month_year_picker-0.1.0+2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -668,7 +680,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-05-21T07:08:56.545552Z",
+  "generated": "2022-05-26T17:54:33.002530Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

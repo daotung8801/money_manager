@@ -77,7 +77,7 @@ class AccountDetailScreen extends StatelessWidget {
                 b: 0),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 16.w, top: 20.h),
+            padding: EdgeInsets.only(left: 16.w, top: 25.h),
             child: TitleText1(
                 text: 'Tài khoản',
                 fontFamily: 'Inter',
@@ -105,7 +105,7 @@ class AccountDetailScreen extends StatelessWidget {
                         .description)),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 16.w, top: 20.h),
+            padding: EdgeInsets.only(left: 16.w, top: 25.h),
             child: TitleText1(
                 text: 'Danh mục',
                 fontFamily: 'Inter',
@@ -122,7 +122,7 @@ class AccountDetailScreen extends StatelessWidget {
                     .getCategory(transactionDetails.categoryID)!),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 16.w, top: 20.h),
+            padding: EdgeInsets.only(left: 16.w, top: 25.h),
             child: TitleText1(
                 text: 'Ngày',
                 fontFamily: 'Inter',
@@ -145,7 +145,7 @@ class AccountDetailScreen extends StatelessWidget {
                 b: 0),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 16.w, top: 20.h),
+            padding: EdgeInsets.only(left: 16.w, top: 25.h),
             child: TitleText1(
                 text: 'Ghi chú',
                 fontFamily: 'Inter',
