@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'TitleText1.dart';
-import 'package:money_manager/screens/BudgetScreen.dart';
 
 class ButtonPrimary extends StatelessWidget {
   ButtonPrimary(
@@ -28,22 +27,22 @@ class ButtonPrimary extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return SizedBox(
-      width: this.weight.w,
-      height: this.height.h,
+      width: weight.w,
+      height: height.h,
       child: RaisedButton(
         onPressed: () {},
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(radius.r)),
+        ),
+        color: Color.fromARGB(255, r, g, b),
         child: TitleText1(
-            text: this.text,
+            text: text,
             fontFamily: 'Inter',
-            fontSize: this.fontSize.sp,
+            fontSize: fontSize.sp,
             fontWeight: FontWeight.bold,
             r: 255,
             g: 255,
             b: 255),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(this.radius.r)),
-        ),
-        color: Color.fromARGB(255, this.r, this.g, this.b),
       ),
     );
   }

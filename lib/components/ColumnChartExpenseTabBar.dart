@@ -1,18 +1,21 @@
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'ColumnChartModel.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 
 class ColumnChartExpenseTabBar extends StatelessWidget {
+  ColumnChartExpenseTabBar({Key? key}) : super(key: key);
+
   final List<ColumnChartModel> dayData = [
-    ColumnChartModel(time: '30/1', money: 800, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
-    ColumnChartModel(time: '28/2', money: 500, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
-    ColumnChartModel(time: '27/3', money: 700, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
-    ColumnChartModel(time: '26/4', money: 600, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
-    ColumnChartModel(time: '25/5', money: 550, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
-    ColumnChartModel(time: '30/6', money: 400, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
-    ColumnChartModel(time: '25/7', money: 350, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
-    ColumnChartModel(time: '1/8', money: 750, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
+    ColumnChartModel(time: '30/1', money: 800, color: charts.ColorUtil.fromDartColor(const Color.fromARGB(255, 35, 111, 87))),
+    ColumnChartModel(time: '28/2', money: 500, color: charts.ColorUtil.fromDartColor(const Color.fromARGB(255, 35, 111, 87))),
+    ColumnChartModel(time: '27/3', money: 700, color: charts.ColorUtil.fromDartColor(const Color.fromARGB(255, 35, 111, 87))),
+    ColumnChartModel(time: '26/4', money: 600, color: charts.ColorUtil.fromDartColor(const Color.fromARGB(255, 35, 111, 87))),
+    ColumnChartModel(time: '25/5', money: 550, color: charts.ColorUtil.fromDartColor(const Color.fromARGB(255, 35, 111, 87))),
+    ColumnChartModel(time: '30/6', money: 400, color: charts.ColorUtil.fromDartColor(const Color.fromARGB(255, 35, 111, 87))),
+    ColumnChartModel(time: '25/7', money: 350, color: charts.ColorUtil.fromDartColor(const Color.fromARGB(255, 35, 111, 87))),
+    ColumnChartModel(time: '1/8', money: 750, color: charts.ColorUtil.fromDartColor(const Color.fromARGB(255, 35, 111, 87))),
     // ColumnChartModel(month: 'Th9', money: 700, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
     // ColumnChartModel(month: 'Th10', money: 720, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
     // ColumnChartModel(month: 'Th11', money: 350, color: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 35, 111, 87))),
@@ -146,7 +149,7 @@ class ColumnChartExpenseTabBar extends StatelessWidget {
                   child: charts.BarChart(
                     yearSeries,
                     animate: true,
-                    defaultRenderer: new charts.BarRendererConfig(
+                    defaultRenderer: charts.BarRendererConfig(
                       cornerStrategy: const charts.ConstCornerStrategy(5),
                     ),
                   ),
@@ -156,7 +159,7 @@ class ColumnChartExpenseTabBar extends StatelessWidget {
                   child: charts.BarChart(
                     monthSeries,
                     animate: true,
-                    defaultRenderer: new charts.BarRendererConfig(
+                    defaultRenderer: charts.BarRendererConfig(
                       cornerStrategy: const charts.ConstCornerStrategy(5),
                     ),
                   ),

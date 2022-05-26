@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
-  const Header(this.heading);
+  const Header({Key? key, required this.heading}) : super(key: key);
 
   final String heading;
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Text(
           heading,
           style: const TextStyle(fontSize: 24),
@@ -16,7 +16,7 @@ class Header extends StatelessWidget {
 }
 
 class Paragraph extends StatelessWidget {
-  const Paragraph(this.content);
+  const Paragraph({Key? key, required this.content}) : super(key: key);
 
   final String content;
 
@@ -31,14 +31,15 @@ class Paragraph extends StatelessWidget {
 }
 
 class IconAndDetail extends StatelessWidget {
-  const IconAndDetail(this.icon, this.detail);
+  const IconAndDetail({Key? key, required this.icon, required this.detail})
+      : super(key: key);
 
   final IconData icon;
   final String detail;
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Row(
           children: [
             Icon(icon),
@@ -68,14 +69,13 @@ class CommonStyle {
       //   fontFamily: 'Inter',
       //   color: Color.fromARGB(255, 189, 189, 189),
       // ),
-      border: OutlineInputBorder(),
+      border: const OutlineInputBorder(),
       enabledBorder: const OutlineInputBorder(
-        borderSide: const BorderSide(
-            color: Color.fromARGB(255, 189, 189, 189), width: 1.0),
+        borderSide: BorderSide(color: Color.fromARGB(255, 189, 189, 189)),
       ),
       focusedBorder: const OutlineInputBorder(
-        borderSide: const BorderSide(
-            color: Color.fromARGB(255, 35, 111, 87), width: 2.0),
+        borderSide:
+            BorderSide(color: Color.fromARGB(255, 35, 111, 87), width: 2),
       ),
       // fillColor: Color.fromARGB(255, 232, 232, 232),
       // filled: true,
@@ -91,18 +91,17 @@ class CommonStyle {
       labelText: labelText,
       suffixIcon: IconButton(
         // iconSize: 30,
-        icon: Icon(Icons.visibility),
-        color: Color.fromARGB(255, 35, 111, 87),
+        icon: const Icon(Icons.visibility),
+        color: const Color.fromARGB(255, 35, 111, 87),
         onPressed: iconVisibilityOnPressed,
       ),
-      border: OutlineInputBorder(),
+      border: const OutlineInputBorder(),
       enabledBorder: const OutlineInputBorder(
-        borderSide: const BorderSide(
-            color: Color.fromARGB(255, 189, 189, 189), width: 1.0),
+        borderSide: BorderSide(color: Color.fromARGB(255, 189, 189, 189)),
       ),
       focusedBorder: const OutlineInputBorder(
-        borderSide: const BorderSide(
-            color: Color.fromARGB(255, 35, 111, 87), width: 2.0),
+        borderSide:
+            BorderSide(color: Color.fromARGB(255, 35, 111, 87), width: 2),
       ),
     );
   }
@@ -124,7 +123,7 @@ class StyledTextButton extends StatelessWidget {
 class MyIconButton {
   static IconButton icon({required String url, required Function() onPressed}) {
     return IconButton(
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       iconSize: 60,
       icon: Image.asset(url),
       onPressed: onPressed,
@@ -134,10 +133,12 @@ class MyIconButton {
 
 class StyledElevatedButton extends StatelessWidget {
   const StyledElevatedButton(
-      {required this.child,
+      {Key? key,
+      required this.child,
       required this.onPressed,
       required this.width,
-      required this.height});
+      required this.height})
+      : super(key: key);
 
   final double width, height;
   final Widget child;

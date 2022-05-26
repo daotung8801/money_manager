@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:money_manager/components/Account.dart';
+import 'package:money_manager/components/account.dart';
 import 'package:money_manager/components/Category.dart';
 import 'package:money_manager/components/CategoryHWidget.dart';
-import 'package:money_manager/components/CategoryIconWidget.dart';
 import 'package:money_manager/main.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +28,7 @@ class ContentWithoutNoteWidget extends StatelessWidget {
         Category category =
             Category(id: '', icon: '', color: '', description: '');
         String accountName = '';
-        List<Category> categories = [];
+        final List<Category> categories = [];
         categories.addAll(appState.expenseCategories);
         categories.addAll(appState.incomeCategories);
         for (Category e in categories) {

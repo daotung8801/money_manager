@@ -102,7 +102,7 @@ class SvgPathPainter {
     final ByteData data = await rootBundle.load(imageAssetPath);
     final codec = await ui.instantiateImageCodec(Uint8List.view(data.buffer));
     final frameInfo = await codec.getNextFrame();
-    _paint.color = const Color(0xFFFFFFFF).withOpacity(opacity ?? 1);
+    _paint.color = const Color(0xFFFFFFFF).withOpacity(opacity);
     _paint.shader = ImageShader(
       frameInfo.image,
       TileMode.repeated,
@@ -155,7 +155,7 @@ class SvgPathsPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    _painters?.forEach((element) => element.draw(canvas));
+    _painters.forEach((element) => element.draw(canvas));
   }
 }
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'CategoryVWidget.dart';
+
 import 'Category.dart';
+import 'CategoryVWidget.dart';
 
 class CategoryGridView extends StatelessWidget {
   List<Category> categories;
@@ -11,7 +12,6 @@ class CategoryGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.zero,
       child: GridView.count(
         crossAxisCount: 4,
         crossAxisSpacing: 4.0.h,

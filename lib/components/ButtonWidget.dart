@@ -15,22 +15,22 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      minimumSize: Size.fromHeight(50.h),
-    ),
-    child: buildContent(),
-    onPressed: onClicked,
-  );
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size.fromHeight(50.h),
+        ),
+        onPressed: onClicked,
+        child: buildContent(),
+      );
 
   Widget buildContent() => Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      Icon(icon, size: 28.sp),
-      SizedBox(width: 16.w),
-      Text(
-        text,
-        style: TextStyle(fontSize: 22.sp, color: Colors.white),
-      ),
-    ],
-  );
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 28.sp),
+          SizedBox(width: 16.w),
+          Text(
+            text,
+            style: TextStyle(fontSize: 22.sp, color: Colors.white),
+          ),
+        ],
+      );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:money_manager/components/Account.dart';
+import 'package:money_manager/components/account.dart';
 import 'package:money_manager/main.dart';
 import 'package:money_manager/screens/AddAccountScreen.dart';
 import 'package:money_manager/src/widgets.dart';
