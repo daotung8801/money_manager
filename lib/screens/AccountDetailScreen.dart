@@ -59,7 +59,7 @@ class AccountDetailScreen extends StatelessWidget {
             child: TitleText1(
                 text: 'Số tiền',
                 fontFamily: 'Inter',
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: FontWeight.normal,
                 r: 102,
                 g: 102,
@@ -70,7 +70,7 @@ class AccountDetailScreen extends StatelessWidget {
             child: TitleText1(
                 text: transactionDetails.value.toString() + ' ₫',
                 fontFamily: 'Inter',
-                fontSize: 19,
+                fontSize: 18,
                 fontWeight: FontWeight.normal,
                 r: 0,
                 g: 0,
@@ -81,7 +81,7 @@ class AccountDetailScreen extends StatelessWidget {
             child: TitleText1(
                 text: 'Tài khoản',
                 fontFamily: 'Inter',
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: FontWeight.normal,
                 r: 102,
                 g: 102,
@@ -109,7 +109,7 @@ class AccountDetailScreen extends StatelessWidget {
             child: TitleText1(
                 text: 'Danh mục',
                 fontFamily: 'Inter',
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: FontWeight.normal,
                 r: 102,
                 g: 102,
@@ -126,7 +126,7 @@ class AccountDetailScreen extends StatelessWidget {
             child: TitleText1(
                 text: 'Ngày',
                 fontFamily: 'Inter',
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: FontWeight.normal,
                 r: 102,
                 g: 102,
@@ -138,18 +138,18 @@ class AccountDetailScreen extends StatelessWidget {
                 text:
                     '${transactionDetails.date.toDate().day} tháng ${transactionDetails.date.toDate().month}, ${transactionDetails.date.toDate().year}',
                 fontFamily: 'Inter',
-                fontSize: 19,
+                fontSize: 18,
                 fontWeight: FontWeight.normal,
                 r: 0,
                 g: 0,
                 b: 0),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 16.w, top: 5.h),
+            padding: EdgeInsets.only(left: 16.w, top: 20.h),
             child: TitleText1(
                 text: 'Ghi chú',
                 fontFamily: 'Inter',
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: FontWeight.normal,
                 r: 102,
                 g: 102,
@@ -160,50 +160,45 @@ class AccountDetailScreen extends StatelessWidget {
             child: TitleText1(
                 text: transactionDetails.description!,
                 fontFamily: 'Inter',
-                fontSize: 19,
+                fontSize: 18,
                 fontWeight: FontWeight.normal,
                 r: 0,
                 g: 0,
                 b: 0),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
-            child: TextButton(
-              child: Text(
-                'XOÁ',
-                style: TextStyle(color: Colors.red, fontSize: 18),
-              ),
-              onPressed: () {
-                FirebaseFirestore.instance
-                    .collection(
+          Center(
+            child:   Padding(
+              padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 220.h),
+              child: SizedBox(
+                width: 94.w,
+                height: 51.h,
+                child: RaisedButton(
+                  onPressed: () {
+                    FirebaseFirestore.instance
+                        .collection(
                         'userData/${ApplicationState.getInstance.user!.uid}/transactions')
-                    .doc(transactionDetails.id)
-                    .delete()
-                    .then((_) => print('Deleted'))
-                    .catchError((error) => print('Delete failed: $error'));
-                Navigator.pop(context);
-              },
+                        .doc(transactionDetails.id)
+                        .delete()
+                        .then((_) => print('Deleted'))
+                        .catchError((error) => print('Delete failed: $error'));
+                    Navigator.pop(context);
+                  },
+                  child: TitleText1(
+                      text: 'Xóa',
+                      fontFamily: 'Inter',
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.bold,
+                      r: 255,
+                      g: 255,
+                      b: 255),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30.r)),
+                  ),
+                  color: Colors.red,
+                ),
+              ),
             ),
-          ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   children: [
-          //
-          //     Padding(
-          //       padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
-          //       child: ButtonPrimary(
-          //         text: 'Chỉnh sửa',
-          //         r: 35,
-          //         g: 111,
-          //         b: 87,
-          //         radius: 20,
-          //         weight: 143,
-          //         height: 51,
-          //         screenName: 'ContactScreen',
-          //       ),
-          //     ),
-          //   ],
-          // ),
+          )
         ],
       ),
     );

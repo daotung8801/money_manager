@@ -23,7 +23,7 @@ class TransactionContentWidget extends StatelessWidget {
               builder: (context) => AccountDetailScreen(transactionDetails: transaction,))),
       child: Container(
         width: 343.0.w,
-        height: 62.0.h,
+        height: 40.0.h,
         child: Stack(
             fit: StackFit.expand,
             alignment: Alignment.center,
@@ -45,7 +45,7 @@ class TransactionContentWidget extends StatelessWidget {
               ),
               Positioned(
                 left: 10.0.w,
-                top: 42.0.h,
+                top: 35.0.h,
                 right: null,
                 bottom: null,
                 width: 233.0.w,
@@ -67,17 +67,17 @@ class TransactionContentWidget extends StatelessWidget {
                           children: [
                             Positioned(
                               left: 40.0.w,
-                              top: 0.0,
+                              top: 0,
                               right: null,
                               bottom: null,
                               width: 195.0.w,
-                              height: 53.0.h,
+                              height: 51.0.h,
                               child: Text(
                                 this.transaction.description!,
                                 overflow: TextOverflow.visible,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  height: 1.171875.h,
+                                  // height: 1.171875.h,
                                   fontSize: 14.0.sp,
                                   fontFamily: 'Inter',
                                   fontWeight: FontWeight.w400,

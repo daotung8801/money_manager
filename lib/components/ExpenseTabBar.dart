@@ -299,9 +299,12 @@ class _TransactionsState extends State<TransactionsWidget> {
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 26.0.w),
                               child: Container(
-                                child: Text(
-                                    '${date.day} tháng ${date.month}, ${date.year}',
-                                    style: TextStyle(color: Colors.black)),
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 20),
+                                  child: Text(
+                                      '${date.day} tháng ${date.month}, ${date.year}',
+                                      style: TextStyle(color: Colors.black)),
+                                ),
                                 alignment: Alignment.centerLeft,
                               ),
                             ),
