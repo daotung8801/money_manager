@@ -12,6 +12,7 @@ import 'package:money_manager/screens/AccountDetailScreen.dart';
 import 'package:money_manager/screens/AddAccountScreen.dart';
 import 'package:money_manager/screens/ColumnChart.dart';
 import 'package:money_manager/screens/ContactScreen.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
 import 'components/Category.dart';
 import 'firebase_options.dart';
@@ -42,11 +43,12 @@ class MyApp extends StatelessWidget {
       designSize: Size(375, 812),
       builder: (BuildContext c, Widget) => MaterialApp(
         title: 'Money Manager',
-        localizationsDelegates: [
+        localizationsDelegates: const [
           CustomLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate
+          GlobalCupertinoLocalizations.delegate,
+          MonthYearPickerLocalizations.delegate,
         ],
         supportedLocales: [
           const Locale('en', ''),
