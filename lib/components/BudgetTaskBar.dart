@@ -2,10 +2,12 @@ import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_date_pickers/flutter_date_pickers.dart' as dp;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_manager/components/CategoryHWidget.dart';
 import 'package:money_manager/components/ExpenseTabBar.dart';
 import 'package:money_manager/screens/ExchangeMoney.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import 'TitleText1.dart';
@@ -59,57 +61,30 @@ class BudgetTaskBar extends StatelessWidget {
                               DateTime.now().month, DateTime.now().day)),
                       tab: TAB.DATE,
                       isExpense: isExpense),
-                  // Center(
-                  //   child: Column(
-                  //     children: <Widget>[
-                  //       DatePicker1(),
-                  //       TitleText1(text: 'Tổng cộng: 2,000,000 đ', fontFamily: 'Inter', fontSize: 15, fontWeight: FontWeight.bold, r: 0, g: 0, b: 0),
-                  //       // Padding(
-                  //       //   padding: EdgeInsets.only(left: 260.w, top: 280.h),
-                  //       //   child: PlusButton(),
-                  //       // ),
-                  //     ],
-                  //   ),
-                  // ),
-                  Center(
-                      child: TitleText1(
-                          text: 'Tab 2',
-                          fontFamily: 'Inter',
-                          fontSize: 25,
-                          fontWeight: FontWeight.normal,
-                          r: 0,
-                          g: 0,
-                          b: 0)),
-                  Center(
-                      child: TitleText1(
-                          text: 'Tab 3',
-                          fontFamily: 'Inter',
-                          fontSize: 25,
-                          fontWeight: FontWeight.normal,
-                          r: 0,
-                          g: 0,
-                          b: 0)),
-                  Center(
-                      child: TitleText1(
-                          text: 'Tab 4',
-                          fontFamily: 'Inter',
-                          fontSize: 25,
-                          fontWeight: FontWeight.normal,
-                          r: 0,
-                          g: 0,
-                          b: 0)),
-                  // Center(
-                  //   child: Column(
-                  //     children: <Widget>[
-                  //       DateRangePicker(),
-                  //       TitleText1(text: 'Tổng cộng: 2,000,000 đ', fontFamily: 'Inter', fontSize: 15, fontWeight: FontWeight.bold, r: 0, g: 0, b: 0),
-                  //       // Padding(
-                  //       //   padding: EdgeInsets.only(left: 260.w, top: 280.h, bottom: 1.h),
-                  //       //     child: PlusButton(),
-                  //       // ),
-                  //     ],
-                  //   ),
-                  // ),
+                  TransactionsByCategoryWidget(
+                      dateTimeRange: DateTimeRange(
+                          start: DateTime(DateTime.now().year,
+                                  DateTime.now().month, DateTime.now().day)
+                              .subtract(Duration(days: DateTime.now().weekday)),
+                          end: DateTime(DateTime.now().year,
+                                  DateTime.now().month, DateTime.now().day)
+                              .add(Duration(days: 6 - DateTime.now().weekday))),
+                      tab: TAB.WEEK,
+                      isExpense: isExpense),
+                  TransactionsByCategoryWidget(
+                      dateTimeRange: DateTimeRange(
+                          start: DateTime(
+                              DateTime.now().year, DateTime.now().month, 1),
+                          end: DateTime(DateTime.now().year,
+                              DateTime.now().month + 1, 0)),
+                      tab: TAB.MONTH,
+                      isExpense: isExpense),
+                  TransactionsByCategoryWidget(
+                      dateTimeRange: DateTimeRange(
+                          start: DateTime(DateTime.now().year, 1, 1),
+                          end: DateTime(DateTime.now().year, 12, 31)),
+                      tab: TAB.YEAR,
+                      isExpense: isExpense),
                   TransactionsByCategoryWidget(
                       tab: TAB.RANGE, isExpense: isExpense),
                 ],
@@ -339,35 +314,106 @@ class _TransactionsByCategoryState extends State<TransactionsByCategoryWidget> {
               child: Text('${start.day} tháng ${start.month}, ${start.year}',
                   style: const TextStyle(color: Colors.black)));
         }
-      // case TAB.WEEK:
-      //   Future<Function?> onPress() async {
-      //     final newDate = await showDateRangePicker(
-      //       context: context,
-      //       initialDateRange: ,
-      //       firstDate: DateTime(DateTime.now().year - 1),
-      //       lastDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
-      //       builder: (context, child) => Theme(
-      //         data: ThemeData.light().copyWith(
-      //           colorScheme: ColorScheme.light(primary: Color.fromARGB(255, 35, 111, 87)),
-      //         ),
-      //         child: child as Widget,
-      //       ),
-      //     );
-      //     if (newDate!= null){
-      //       _setDateTimeRange(DateTimeRange(start: newDate, end: newDate));
-      //     }
-      //   }
-      //   if (start.year == now.year){
-      //     if (start.isAtSameMomentAs(now)){
-      //       return TextButton(onPressed: onPress, child: Text('Hôm nay, ${start.day} tháng ${start.month}'));
-      //     } else if (start.isAtSameMomentAs(now.subtract(const Duration(days: 1)))){
-      //       return TextButton(onPressed: onPress, child: Text('Hôm qua, ${start.day} tháng ${start.month}'));
-      //     } else {
-      //       return TextButton(onPressed: onPress, child: Text('${start.day} tháng ${start.month}'));
-      //     }
-      //   } else {
-      //     return TextButton(onPressed: onPress, child: Text('${start.day} tháng ${start.month}, ${start.year}'));
-      //   }
+      case TAB.WEEK:
+        return TextButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                DateTime selectedDate = dateTimeRange.start;
+                return AlertDialog(
+                  title: Text("Select Week"),
+                  content: Container(
+                    // Need to use container to add size constraint.
+                    width: 300,
+                    height: 300,
+                    child: dp.WeekPicker(
+                      firstDate:
+                          DateTime.now().subtract(const Duration(days: 365)),
+                      lastDate: DateTime.now(),
+                      // save the selected date to _selectedDate DateTime variable.
+                      // It's used to set the previous selected date when
+                      // re-showing the dialog.
+                      selectedDate: selectedDate,
+                      onChanged: (dp.DatePeriod dateTime) {
+                        // close the dialog when year is selected.
+                        _setDateTimeRange(DateTimeRange(
+                            start: dateTime.start, end: dateTime.end));
+                        Navigator.pop(context);
+
+                        // Do something with the dateTime selected.
+                        // Remember that you need to use dateTime.year to get the year
+                      },
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          child: start.year == end.year
+              ? Text(
+                  'Từ ${start.day}/${start.month} đến ${end.day}/${end.month}/${end.year}',
+                  style: TextStyle(color: Colors.black))
+              : Text(
+                  'Từ ${start.day}/${start.month}/${start.year} đến ${end.day}/${end.month}/${end.year}',
+                  style: TextStyle(color: Colors.black)),
+        );
+      case TAB.MONTH:
+        Future<Function?> onPressed() async {
+          final selected = await showMonthYearPicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2019),
+            lastDate: DateTime.now(),
+          );
+          if (selected != null) {
+            _setDateTimeRange(DateTimeRange(
+                start: DateTime(selected.year, selected.month, 1),
+                end: DateTime(selected.year, selected.month + 1, 0)));
+            print(dateTimeRange.end);
+          }
+        }
+        return TextButton(
+            onPressed: onPressed,
+            child: Text('Tháng ${start.month}, ${start.year}'));
+      case TAB.YEAR:
+        return TextButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  DateTime selectedDate = dateTimeRange.start;
+                  return AlertDialog(
+                    title: Text("Select Year"),
+                    content: Container(
+                      // Need to use container to add size constraint.
+                      width: 300,
+                      height: 300,
+                      child: YearPicker(
+                        firstDate: DateTime(DateTime.now().year - 10),
+                        lastDate: DateTime(DateTime.now().year),
+                        initialDate: DateTime.now(),
+                        // save the selected date to _selectedDate DateTime variable.
+                        // It's used to set the previous selected date when
+                        // re-showing the dialog.
+                        selectedDate: selectedDate,
+                        onChanged: (DateTime dateTime) {
+                          // close the dialog when year is selected.
+                          _setDateTimeRange(DateTimeRange(
+                              start: DateTime(dateTime.year, 1, 1),
+                              end: DateTime(dateTime.year, 12, 31)));
+                          Navigator.pop(context);
+
+                          // Do something with the dateTime selected.
+                          // Remember that you need to use dateTime.year to get the year
+                        },
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+            child: Text('${start.year}'));
       case TAB.RANGE:
         if (start.year == end.year) {
           return TextButton(
